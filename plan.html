@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Java Developer 30-Day Interview Prep Tracker</title>
+<style>
+    .calendar {
+  display:grid;
+  grid-template-columns: repeat(7,1fr);
+  gap:6px;
+  margin:20px 0;
+}
+.calendar .cell {
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:8px;
+  text-align:center;
+  font-size:.85rem;
+  cursor:pointer;
+  background:var(--card);
+  transition:.2s;
+}
+.calendar .cell.done {
+  background:#22c55e;
+  color:#fff;
+  border-color:#16a34a;
+}
+.calendar .cell:hover {
+  transform:scale(1.05);
+}
+body.dark .calendar .cell {
+  background:#222;
+  border-color:#444;
+}
+
+  :root{
+    --brand:#72246c; --ink:#222; --muted:#666; --bg:#f5f6f8; --card:#ffffff; --line:#e9e9ee; --accent:#3b82f6;
+  }
+  body.dark {
+    --bg:#121212; --ink:#eee; --muted:#aaa; --card:#1e1e1e; --line:#333; --accent:#60a5fa;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+  header{background:var(--brand);color:#fff;padding:18px}
+  header h1{margin:0;font-size:1.4rem}
+  header p{margin:.4rem 0 0;opacity:.9}
+  .wrap{max-width:1000px;margin:0 auto;padding:18px}
+  .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:8px 0 16px}
+  .toolbar input[type="search"]{flex:1;min-width:220px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+  body.dark .toolbar input[type="search"]{background:#222;color:#eee;border-color:#444}
+  .btn{appearance:none;border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;cursor:pointer;color:var(--ink);font-size:.85rem}
+  .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+  body.dark .btn{background:#222;color:#eee;border-color:#444}
+  .progress{background:#e8e8ef;border-radius:999px;height:10px;position:relative;overflow:hidden;margin-top:6px}
+  body.dark .progress{background:#333}
+  .bar{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--accent),#22c55e)}
+  .grid{display:flex;flex-wrap:wrap;gap:16px}
+  .grid .day{flex:1 1 calc(50% - 16px)}
+  @media(max-width:760px){.grid .day{flex:1 1 100%}}
+  .day{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,.04);position:relative}
+  .day.highlight{border:2px solid var(--accent);box-shadow:0 0 10px var(--accent)}
+  .day h2{margin:0 0 8px;font-size:1.05rem;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .status-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;margin:6px 0}
+  .controls{display:flex;gap:6px;flex-wrap:wrap}
+  .tag{display:inline-flex;align-items:center;gap:6px;background:#f0f2f7;border:1px solid var(--line);padding:4px 8px;border-radius:999px;font-size:.78rem;color:#333;text-decoration:none}
+  .tag:hover{background:#e8ebf3}
+  body.dark .tag{background:#222;border-color:#444;color:#eee}
+  .pill{background:#eef2ff;color:#3730a3;border:1px solid #c7d2fe;padding:3px 8px;border-radius:999px;font-size:.75rem}
+  body.dark .pill{background:#333;color:#c7d2fe;border-color:#555}
+  label.chk{display:flex;gap:10px;align-items:flex-start;padding:6px 0}
+  input[type="checkbox"]{width:20px;height:20px}
+  h3{margin:10px 0 6px;font-size:.95rem}
+  pre{margin:6px 0 0;background:#0b1220;color:#e6edf3;padding:10px;border-radius:10px;overflow:auto;font-size:.85rem}
+  textarea.notes{width:100%;min-height:60px;margin-top:8px;padding:8px;border-radius:8px;border:1px solid var(--line);font-size:.9rem}
+  details.week summary{cursor:pointer;list-style:none;font-weight:600;margin:8px 0;padding:8px 12px;border-radius:10px;background:#ffffff;border:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  body.dark details.week summary{background:#222;border-color:#444}
+  mark{background:yellow;color:inherit}
+  .footer{margin:18px 0;color:var(--muted);font-size:.9rem}
+  .streak{font-weight:bold}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Java Developer 30-Day Interview Prep Tracker</h1>
+    <p>Track your progress daily. <span class="streak" id="streak">Streak: 0 days</span></p>
+    <div class="progress" aria-label="overall progress"><div class="bar" id="bar"></div></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Search tasks, questions, or topics…"/>
+    <button class="btn" id="expandAll">Expand all</button>
+    <button class="btn" id="collapseAll">Collapse all</button>
+    <button class="btn" id="resetTicks">Reset</button>
+    <button class="btn" id="exportBtn">Export JSON</button>
+    <button class="btn" id="exportMd">Export Markdown</button>
+    <input type="file" id="importFile" hidden/>
+    <button class="btn" id="importBtn">Import</button>
+    <button class="btn" id="darkToggle">🌙 Dark Mode</button>
+  </div>
+  <div id="weeks"></div>
+  <div class="footer">
+    Progress & notes saved in <b>localStorage</b>. Export regularly to keep backups.
+  </div>
+  <h2>📅 Calendar View</h2>
+<div class="calendar" id="calendar"></div>
+
+</div>
+
+<script>
+/* full 30-day plan object — paste your expanded plan here */
+const plan = {
+  // -------- Week 1: Core Java & Problem Solving --------
+  1:{week:1, topic:"OOP & Collections",
+     resources:[
+       {t:"Oracle: OOP Concepts", u:"https://docs.oracle.com/javase/tutorial/java/concepts/index.html"},
+       {t:"Baeldung: Collections", u:"https://www.baeldung.com/java-collections"}
+     ],
+     todos:[
+       "Review OOP pillars (Encapsulation, Inheritance, Polymorphism, Abstraction)",
+       "Practice ArrayList vs LinkedList; HashMap vs TreeMap; HashSet vs TreeSet",
+       "Write equals/hashCode correctly and test in sets/maps"
+     ],
+     questions:[
+       {q:"Implement a simple LRU cache using LinkedHashMap",
+        code:`class LRU<K,V> extends LinkedHashMap<K,V>{
+  private final int cap;
+  LRU(int cap){ super(cap, .75f, true); this.cap=cap; }
+  protected boolean removeEldestEntry(Map.Entry<K,V> e){ return size()>cap; }
+}`},
+       {q:"Correct equals/hashCode for a value object",
+        code:`class Person{
+  final String name; final int age;
+  public boolean equals(Object o){...}
+  public int hashCode(){...}
+}`}
+     ]},
+  2:{week:1, topic:"Generics & Comparator",
+     resources:[
+       {t:"Oracle: Generics", u:"https://docs.oracle.com/javase/tutorial/java/generics/index.html"}
+     ],
+     todos:[
+       "Refactor utilities with generics (no raw types)",
+       "Write custom Comparator with thenComparing and null handling",
+       "Practice PECS (Producer Extends, Consumer Super)"
+     ],
+     questions:[
+       {q:"Sort employees by salary desc, then name asc",
+        code:`list.sort(Comparator.comparing(Employee::getSalary).reversed()
+        .thenComparing(Employee::getName));`}
+     ]},
+  3:{week:1, topic:"Exceptions & Java 8 (Streams/Lambdas/Optional)",
+     resources:[
+       {t:"Oracle: Exceptions", u:"https://docs.oracle.com/javase/tutorial/essential/exceptions/"},
+       {t:"Oracle: Streams", u:"https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html"}
+     ],
+     todos:[
+       "Convert loops to Streams (map/filter/reduce)",
+       "Use Optional to avoid NPE",
+       "Create custom exceptions and handle gracefully"
+     ],
+     questions:[
+       {q:"Reverse words order with Streams",
+        code:`String in="hello world";
+String out=Arrays.stream(in.split(" "))
+  .map(w->new StringBuilder(w).reverse().toString())
+  .collect(Collectors.joining(" "));`},
+       {q:"Sum salaries of active users",
+        code:`long sum = users.stream()
+  .filter(User::isActive)
+  .mapToLong(User::salary)
+  .sum();`}
+     ]},
+  4:{week:1, topic:"Multithreading Basics",
+     resources:[
+       {t:"Java Concurrency Tutorial", u:"https://docs.oracle.com/javase/tutorial/essential/concurrency/"}
+     ],
+     todos:[
+       "Create Runnable vs Callable; Future for results/errors",
+       "Use Executors.newFixedThreadPool and shutdown properly",
+       "Demonstrate race condition and fix via synchronization"
+     ],
+     questions:[
+       {q:"ExecutorService example",
+        code:`ExecutorService ex = Executors.newFixedThreadPool(2);
+Future<Integer> f = ex.submit(() -> 40+2);
+System.out.println(f.get());
+ex.shutdown();`}
+     ]},
+  5:{week:1, topic:"Concurrency (volatile/synchronized/locks)",
+     resources:[
+       {t:"java.util.concurrent package", u:"https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/package-summary.html"}
+     ],
+     todos:[
+       "Explain volatile vs synchronized",
+       "Implement Producer/Consumer with BlockingQueue",
+       "Use ReadWriteLock for read-heavy workloads"
+     ],
+     questions:[
+       {q:"Producer/Consumer using BlockingQueue",
+        code:`BlockingQueue<Integer> q=new ArrayBlockingQueue<>(2);
+new Thread(()->{ q.put(1); }).start();
+new Thread(()->{ System.out.println(q.take()); }).start();`}
+     ]},
+  6:{week:1, topic:"Arrays & Strings",
+     resources:[
+       {t:"LeetCode: Arrays", u:"https://leetcode.com/study-plan/array/"}
+     ],
+     todos:[
+       "Reverse string/words, rotate array, two-pointer patterns",
+       "Sliding window basics",
+       "Practice palindrome and anagram checks"
+     ],
+     questions:[
+       {q:"Check palindrome ignoring non-alphanumerics",
+        code:`String s="A man, a plan, a canal: Panama";
+String t=s.replaceAll("[^A-Za-z0-9]","").toLowerCase();
+boolean ok=t.equals(new StringBuilder(t).reverse().toString());`}
+     ]},
+  7:{week:1, topic:"Mock Test (Core Java + Arrays/Strings)",
+     resources:[
+       {t:"HackerRank Java", u:"https://www.hackerrank.com/domains/java"}
+     ],
+     todos:[
+       "Time-bound mock mixing Java basics & arrays/strings",
+       "Review mistakes; write notes"
+     ],
+     questions:[]},
+
+  // -------- Week 2: Spring & Backend --------
+  8:{week:2, topic:"Spring Core (IoC/DI/Beans)",
+     resources:[
+       {t:"Spring Framework Docs", u:"https://docs.spring.io/spring-framework/reference/"}
+     ],
+     todos:[
+       "Create @Component, @Configuration, @Bean",
+       "Profiles for env-specific beans",
+       "Bean scopes and lifecycle callbacks"
+     ],
+     questions:[
+       {q:"@Configuration with a @Bean",
+        code:`@Configuration
+class AppCfg{
+  @Bean DataSource ds(){ return new HikariDataSource(); }
+}`}
+     ]},
+  9:{week:2, topic:"Spring Boot Basics",
+     resources:[
+       {t:"Spring Boot Docs", u:"https://docs.spring.io/spring-boot/docs/current/reference/html/"}
+     ],
+     todos:[
+       "Understand @SpringBootApplication; auto-configuration",
+       "application.yml profiles",
+       "Actuator basics"
+     ],
+     questions:[
+       {q:"Boot main class",
+        code:`@SpringBootApplication
+public class App{ public static void main(String[] a){ SpringApplication.run(App.class,a);} }`}
+     ]},
+  10:{week:2, topic:"Spring MVC Flow",
+     resources:[
+       {t:"Spring MVC Docs", u:"https://docs.spring.io/spring-framework/reference/web/webmvc.html"}
+     ],
+     todos:[
+       "DispatcherServlet flow",
+       "Validation with @Valid and @ControllerAdvice"
+     ],
+     questions:[
+       {q:"Simple MVC controller",
+        code:`@RestController
+class UserCtrl{
+  @PostMapping("/users") User create(@Valid @RequestBody User u){ return svc.save(u); }
+}`}
+     ]},
+  11:{week:2, topic:"REST API Design",
+     resources:[
+       {t:"Spring REST Guide", u:"https://spring.io/guides/gs/rest-service/"}
+     ],
+     todos:[
+       "Design endpoints, status codes, error model",
+       "Pagination, sorting, filtering; versioning strategies"
+     ],
+     questions:[
+       {q:"Controller with error handling",
+        code:`@ControllerAdvice
+class Err{
+  @ExceptionHandler(NotFound.class)
+  ResponseEntity<?> nf(NotFound e){
+    return ResponseEntity.status(404).body(Map.of("error",e.getMessage()));
+  }
+}`}
+     ]},
+  12:{week:2, topic:"Spring Data JPA",
+     resources:[
+       {t:"Spring Data JPA Docs", u:"https://docs.spring.io/spring-data/jpa/docs/current/reference/html/"}
+     ],
+     todos:[
+       "CrudRepository vs JpaRepository",
+       "Pagination/Sorting; N+1 problem; @EntityGraph"
+     ],
+     questions:[
+       {q:"Repository Example",
+        code:`interface UserRepo extends JpaRepository<User,Long>{
+  Page<User> findByStatus(String s, Pageable p);
+}`}
+     ]},
+  13:{week:2, topic:"Spring Security (JWT basics)",
+     resources:[
+       {t:"Spring Security Docs", u:"https://docs.spring.io/spring-security/reference/"}
+     ],
+     todos:[
+       "Authentication vs Authorization",
+       "Stateless JWT filter",
+       "Method security @PreAuthorize"
+     ],
+     questions:[
+       {q:"Stateless security config",
+        code:`@Bean SecurityFilterChain sc(HttpSecurity http)throws Exception{
+  http.csrf(cs->cs.disable())
+      .authorizeHttpRequests(a->a.anyRequest().authenticated())
+      .sessionManagement(sm->sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+  return http.build();
+}`}
+     ]},
+  14:{week:2, topic:"Mini Project: CRUD API",
+     resources:[
+       {t:"Spring Guide: Accessing JPA Data", u:"https://spring.io/guides/gs/accessing-data-jpa/"}
+     ],
+     todos:[
+       "Build User CRUD with validation, JPA, errors, tests",
+       "Add pagination & sorting"
+     ],
+     questions:[]},
+
+  // -------- Week 3: DB, Cloud, Observability --------
+  15:{week:3, topic:"SQL Joins & Aggregation",
+     resources:[
+       {t:"SQLZOO Joins", u:"https://sqlzoo.net/wiki/The_JOIN_operation"}
+     ],
+     todos:[
+       "Write INNER/LEFT/RIGHT joins; GROUP BY; HAVING",
+       "Design indexes for common queries"
+     ],
+     questions:[
+       {q:"Top N per group with window function",
+        code:`SELECT emp_id, dept, salary,
+ RANK() OVER (PARTITION BY dept ORDER BY salary DESC) r
+FROM employees;`}
+     ]},
+  16:{week:3, topic:"Query Tuning & Indexing",
+     resources:[
+       {t:"Use The Index, Luke!", u:"https://use-the-index-luke.com/"}
+     ],
+     todos:[
+       "Read EXPLAIN plans",
+       "Composite vs single-column indexes"
+     ],
+     questions:[
+       {q:"EXPLAIN ANALYZE example",
+        code:`EXPLAIN ANALYZE SELECT * FROM orders WHERE user_id = ?;`}
+     ]},
+  17:{week:3, topic:"DB Migration & Versioning",
+     resources:[
+       {t:"Flyway Docs", u:"https://documentation.red-gate.com/fd"}
+     ],
+     todos:[
+       "Create Flyway/Liquibase scripts",
+       "Rollback strategy; data backfill scripts"
+     ],
+     questions:[
+       {q:"Flyway migration example",
+        code:`-- V1__init.sql
+CREATE TABLE users(id BIGSERIAL PRIMARY KEY, name TEXT NOT NULL);`}
+     ]},
+  18:{week:3, topic:"AWS Basics (S3, EC2, IAM)",
+     resources:[
+       {t:"AWS S3 Docs", u:"https://docs.aws.amazon.com/s3/index.html"}
+     ],
+     todos:[
+       "Upload/read from S3 with SDK",
+       "EC2 basics; security groups"
+     ],
+     questions:[
+       {q:"S3 upload",
+        code:`S3Client s3 = S3Client.builder().build();
+s3.putObject(b->b.bucket("bucket").key("key"),
+ RequestBody.fromFile(Paths.get("file.txt")));`}
+     ]},
+  19:{week:3, topic:"Docker & Kubernetes Intro",
+     resources:[
+       {t:"Docker Getting Started", u:"https://docs.docker.com/get-started/"},
+       {t:"Kubernetes Basics", u:"https://kubernetes.io/docs/tutorials/kubernetes-basics/"}
+     ],
+     todos:[
+       "Build Dockerfile for Spring Boot",
+       "K8s Deployment + Service manifest"
+     ],
+     questions:[
+       {q:"Simple Dockerfile",
+        code:`FROM eclipse-temurin:17-jre
+WORKDIR /app
+COPY target/app.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/app/app.jar"]`}
+     ]},
+  20:{week:3, topic:"Logging & Monitoring",
+     resources:[
+       {t:"Splunk Docs", u:"https://docs.splunk.com/"}
+     ],
+     todos:[
+       "Add JSON logging; correlation IDs",
+       "Forward logs to Splunk"
+     ],
+     questions:[]},
+  21:{week:3, topic:"Low-Level Design (E-commerce Cart)",
+     resources:[
+       {t:"Design Patterns", u:"https://refactoring.guru/design-patterns"}
+     ],
+     todos:[
+       "Model entities (User, Product, Cart, Order)",
+       "APIs: add/remove item, checkout"
+     ],
+     questions:[]},
+
+  // -------- Week 4: Advanced + Mock Interviews --------
+  22:{week:4, topic:"Dynamic Programming",
+     resources:[
+       {t:"LeetCode DP Study Plan", u:"https://leetcode.com/study-plan/dynamic-programming/"}
+     ],
+     todos:[
+       "Implement Kadane, Coin Change, 0/1 Knapsack",
+       "Write tabulation + memoization versions"
+     ],
+     questions:[
+       {q:"Kadane’s Algorithm",
+        code:`int max=nums[0], cur=nums[0];
+for(int i=1;i<nums.length;i++){
+ cur=Math.max(nums[i],cur+nums[i]);
+ max=Math.max(max,cur);
+}`}
+     ]},
+  23:{week:4, topic:"Trees & Graphs",
+     resources:[
+       {t:"LeetCode: Trees", u:"https://leetcode.com/tag/tree/"}
+     ],
+     todos:[
+       "DFS/BFS templates",
+       "LCA; Topological sort"
+     ],
+     questions:[
+       {q:"BFS shortest path",
+        code:`Queue<Integer> q=new ArrayDeque<>(); q.add(src); dist[src]=0;
+while(!q.isEmpty()){ int u=q.poll();
+ for(int v:adj[u]) if(dist[v]==INF){ dist[v]=dist[u]+1; q.add(v); } }`}
+     ]},
+  24:{week:4, topic:"System Design: URL Shortener",
+     resources:[
+       {t:"System Design Primer", u:"https://github.com/donnemartin/system-design-primer"}
+     ],
+     todos:[
+       "API: shorten, redirect; DB schema; cache",
+       "Analytics; rate limiting"
+     ],
+     questions:[]},
+  25:{week:4, topic:"Microservices & Resilience",
+     resources:[
+       {t:"Microservices.io Patterns", u:"https://microservices.io/"}
+     ],
+     todos:[
+       "API gateway, service registry",
+       "Async with Kafka; circuit breakers"
+     ],
+     questions:[]},
+  26:{week:4, topic:"Frontend Refresh (React/Forms/Tests)",
+     resources:[
+       {t:"React Docs", u:"https://react.dev/"}
+     ],
+     todos:[
+       "Build small form with React Hook Form",
+       "Unit test with Jest"
+     ],
+     questions:[]},
+  27:{week:4, topic:"Mock Coding Round (Timed)",
+     resources:[
+       {t:"LeetCode Medium", u:"https://leetcode.com/problemset/all/?difficulty=MEDIUM"}
+     ],
+     todos:[
+       "90-min timed set (arrays/strings + DP + tree/graph)",
+       "Write post-mortem on mistakes"
+     ],
+     questions:[]},
+  28:{week:4, topic:"Behavioral (STAR) & Story Bank",
+     resources:[
+       {t:"STAR Method", u:"https://www.indeed.com/career-advice/interviewing/how-to-use-the-star-interview-response-technique"}
+     ],
+     todos:[
+       "Draft 6 STAR stories (conflict, leadership, tight deadline, etc.)",
+       "Align stories to job description"
+     ],
+     questions:[]},
+  29:{week:4, topic:"Review & Résumé Pitch",
+     resources:[
+       {t:"Google: Interview Warmup", u:"https://grow.google/certificates/interview-warmup/"}
+     ],
+     todos:[
+       "Review weak topics",
+       "Refine 60-second elevator pitch"
+     ],
+     questions:[]},
+  30:{week:4, topic:"Full Mock Interview (Tech + HR)",
+     resources:[
+       {t:"Pramp", u:"https://www.pramp.com/"}
+     ],
+     todos:[
+       "Run tech + HR mock; gather feedback; final tweaks"
+     ],
+     questions:[]}
+};
+
+
+const weeksRoot=document.getElementById('weeks');
+const weekMap={1:"Week 1 – Core Java",2:"Week 2 – Spring",3:"Week 3 – DB/Cloud",4:"Week 4 – Advanced"};
+const saved=JSON.parse(localStorage.getItem('prep-progress')||'{}');
+
+function dayCheckedCount(id){
+  return Object.keys(saved).filter(k=>k.startsWith(`d${id}-`)&&saved[k]).length;
+}
+function totalItems(){let n=0;Object.values(plan).forEach(d=>{n+=(d.todos?.length||0)+(d.questions?.length||0)});return n;}
+function totalChecked(){return Object.values(saved).filter(Boolean).length;}
+function updateBar(){const p=Math.round(100*totalChecked()/Math.max(1,totalItems()));document.getElementById('bar').style.width=p+"%";}
+
+function tagLink(r){return `<a class="tag" href="${r.u}" target="_blank">${r.t}</a>`;}
+
+function dayCard(id){
+  const d=plan[id],todos=d.todos||[],qs=d.questions||[];
+  let html=`<div class="day" data-day="${id}">
+    <h2>Day ${id}: ${d.topic} ${(d.resources||[]).map(tagLink).join(' ')}</h2>
+    <div class="status-row">
+      <span class="pill">${dayCheckedCount(id)} / ${(todos.length+qs.length)||0} done</span>
+      <div class="controls">
+        <button class="btn" data-mark="day${id}-all">Mark all</button>
+        <button class="btn" data-clear="day${id}-all">Clear</button>
+      </div>
+    </div>`;
+  if(todos.length){html+="<h3>To-Do</h3>";}
+  todos.forEach((t,i)=>{const key=`d${id}-t${i}`,chk=saved[key]?'checked':'';html+=`<label class="chk"><input type="checkbox" id="${key}" ${chk}/> <span>${t}</span></label>`});
+  if(qs.length){html+="<h3>Common Questions</h3>";}
+  qs.forEach((q,i)=>{const key=`d${id}-q${i}`,chk=saved[key]?'checked':'';html+=`<label class="chk"><input type="checkbox" id="${key}" ${chk}/> <span><b>${q.q}</b></span></label><pre>${q.code}</pre>`});
+  html+=`<h3>Notes</h3><textarea class="notes" id="n${id}" placeholder="Write notes here...">${saved['n'+id]||''}</textarea>`;
+  html+="</div>";const div=document.createElement('div');div.innerHTML=html;return div.firstElementChild;
+}
+
+function build(){
+  weeksRoot.innerHTML='';
+  [1,2,3,4].forEach(w=>{
+    const det=document.createElement('details');det.className='week';if(w===1)det.open=true;
+    det.innerHTML=`<summary>${weekMap[w]} <span class="pill" id="wp${w}"></span></summary><div class="grid" id="w${w}"></div><h3>Weekly Reflection</h3><textarea class="notes" id="wr${w}" placeholder="What did I learn this week?">${saved['wr'+w]||''}</textarea>`;
+    weeksRoot.appendChild(det);
+  });
+  Object.keys(plan).forEach(id=>{
+    document.getElementById('w'+plan[id].week).appendChild(dayCard(id));
+  });
+  updateWeekPills();updateBar();highlightToday();
+}
+
+function updateWeekPills(){
+  [1,2,3,4].forEach(w=>{
+    const days=Object.keys(plan).filter(d=>plan[d].week===w);
+    const total=days.map(d=> (plan[d].todos.length+plan[d].questions.length)).reduce((a,b)=>a+b,0);
+    const done=days.map(d=> dayCheckedCount(d)).reduce((a,b)=>a+b,0);
+    const el=document.getElementById('wp'+w);
+    if(el) el.textContent=`${done}/${total}`;
+  });
+}
+function highlightToday(){
+  const today=new Date();const dayNum=(today.getDate()%30)||30;
+  const el=document.querySelector(`.day[data-day="${dayNum}"]`);
+  if(el){el.classList.add('highlight');el.scrollIntoView({behavior:'smooth',block:'center'});}
+}
+
+// save ticks & notes
+weeksRoot.addEventListener('change',e=>{
+  if(e.target.type==='checkbox'){saved[e.target.id]=e.target.checked;}
+  if(e.target.classList.contains('notes')){saved[e.target.id]=e.target.value;}
+  localStorage.setItem('prep-progress',JSON.stringify(saved));
+  updateBar();updateWeekPills();updateStreak();buildCalendar();
+});
+weeksRoot.addEventListener('input',e=>{
+  if(e.target.classList.contains('notes')){saved[e.target.id]=e.target.value;localStorage.setItem('prep-progress',JSON.stringify(saved));}
+});
+
+weeksRoot.addEventListener('click',e=>{
+  const btn=e.target.closest('button');if(!btn)return;
+  const dayId=btn.closest('.day')?.dataset.day;
+  if(dayId){
+    const keys=[];plan[dayId].todos.forEach((_,i)=>keys.push(`d${dayId}-t${i}`));
+    plan[dayId].questions.forEach((_,i)=>keys.push(`d${dayId}-q${i}`));
+    keys.forEach(k=>{saved[k]=btn.dataset.mark?true:false;document.getElementById(k).checked=btn.dataset.mark?true:false});
+    localStorage.setItem('prep-progress',JSON.stringify(saved));updateBar();updateWeekPills();
+  }
+});
+
+// streak
+function updateStreak(){
+  const days=Object.keys(plan).map(Number);
+  let streak=0;
+  // Start from the latest day (30) and go backwards
+  for(let i=days.length;i>=1;i--){
+    const done = dayCheckedCount(i) > 0 || (saved['n'+i] && saved['n'+i].trim() !== '');
+    if(done) streak++; else break; // Stop if a day is not done
+  }
+  document.getElementById('streak').textContent=`Streak: ${streak} day${streak!==1?'s':''}`;
+}
+updateStreak();
+
+// search w/ highlight
+document.getElementById('search').addEventListener('input',e=>{
+  const q=e.target.value.toLowerCase();
+  document.querySelectorAll('.day').forEach(card=>{
+    // Restore original text first to remove previous highlights
+    card.querySelectorAll('mark').forEach(m=>{m.replaceWith(m.textContent)});
+
+    const textContent = card.innerText.toLowerCase(); // Get text content for search
+    
+    // Check if the card should be displayed
+    const shouldDisplay = textContent.includes(q);
+    card.style.display = shouldDisplay ? '' : 'none';
+
+    // Highlight only if there's a search query and the card is displayed
+    if(q && shouldDisplay){
+      // Re-get the innerHTML to apply highlights, but only to relevant text, not input values
+      // This is a simplified approach; a more robust one would re-render or use a dedicated highlighter library
+      let currentHTML = card.innerHTML;
+      // Use a negative lookahead to avoid matching within <input> or <textarea> tags
+      // This is a basic attempt, complex HTML might need more sophisticated parsing
+      currentHTML = currentHTML.replace(new RegExp(`(?![^<]*>|[^<>]*<\/|[^"]*")(${q})`,'gi'), m => `<mark>${m}</mark>`);
+      card.innerHTML = currentHTML;
+    }
+  });
+});
+
+
+// expand/collapse
+document.getElementById('expandAll').onclick=()=>{document.querySelectorAll('details').forEach(d=>d.open=true);}
+document.getElementById('collapseAll').onclick=()=>{document.querySelectorAll('details').forEach(d=>d.open=false);}
+
+// reset
+document.getElementById('resetTicks').onclick=()=>{
+  if(!confirm('Reset ALL progress & notes?'))return;
+  Object.keys(saved).forEach(k=>delete saved[k]);
+  localStorage.setItem('prep-progress',JSON.stringify(saved));
+  build();
+};
+
+// export/import
+document.getElementById('exportBtn').onclick=()=>{
+  const blob=new Blob([JSON.stringify(saved,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='prep-progress.json';a.click();
+};
+document.getElementById('exportMd').onclick=()=>{
+  let md="# Prep Progress Export\n\n";
+  Object.keys(plan).forEach(id=>{
+    const d=plan[id];
+    md+=`## Day ${id}: ${d.topic}\n`;
+    d.todos.forEach((t,i)=>{md+=`- [${saved[`d${id}-t${i}`]?'x':' '}] ${t}\n`;});
+    d.questions.forEach((q,i)=>{md+=`- [${saved[`d${id}-q${i}`]?'x':' '}] Q: ${q.q}\n`;});
+    md+=`\nNotes:\n${saved['n'+id]||''}\n\n`;
+  });
+  const blob=new Blob([md],{type:'text/markdown'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='prep-progress.md';a.click();
+};
+document.getElementById('importBtn').onclick=()=>document.getElementById('importFile').click();
+document.getElementById('importFile').onchange=async e=>{
+  const f=e.target.files[0];if(!f)return;
+  const txt=await f.text();try{const data=JSON.parse(txt);Object.assign(saved,data);localStorage.setItem('prep-progress',JSON.stringify(saved));build();alert('Progress imported!')}catch{alert('Invalid file.')}
+};
+
+// dark mode auto
+if(window.matchMedia('(prefers-color-scheme: dark)').matches){document.body.classList.add('dark');}
+document.getElementById('darkToggle').onclick=()=>document.body.classList.toggle('dark');
+
+function buildCalendar() {
+  const cal = document.getElementById('calendar');
+  cal.innerHTML = '';
+  for (let i = 1; i <= 30; i++) {
+    const total = (plan[i].todos?.length || 0) + (plan[i].questions?.length || 0);
+    const done = dayCheckedCount(i);
+    const div = document.createElement('div');
+    div.className = 'cell' + (done === total && total > 0 ? ' done' : '');
+    div.textContent = i;
+    div.title = plan[i].topic;
+    div.onclick = () => {
+      const dayEl = document.querySelector(`.day[data-day="${i}"]`);
+      if (dayEl) {
+        // Find the parent <details> element (the week) and open it
+        const weekDetails = dayEl.closest('details.week');
+        if (weekDetails) {
+          weekDetails.open = true;
+        }
+
+        // Scroll to the day element
+        dayEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        dayEl.classList.add('highlight');
+        setTimeout(() => dayEl.classList.remove('highlight'), 2000);
+      }
+    };
+    cal.appendChild(div);
+  }
+}
+
+// build UI
+build();
+buildCalendar();
+
+</script>
+
+</body>
+</html>
