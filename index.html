@@ -435,8 +435,9 @@ ENTRYPOINT ["java","-jar","/app/app.jar"]`}
        {t:"LeetCode DP Study Plan", u:"https://leetcode.com/study-plan/dynamic-programming/"}
      ],
      todos:[
-       "Implement Kadane, Coin Change, 0/1 Knapsack",
-       "Write tabulation + memoization versions"
+       "Understand core DP concepts: optimal substructure & overlapping subproblems",
+       "Learn Memoization (top-down) vs. Tabulation (bottom-up)",
+       "Practice with Fibonacci, then move to problems like Coin Change & 0/1 Knapsack"
      ],
      questions:[
        {q:"Kadane’s Algorithm",
@@ -451,8 +452,9 @@ for(int i=1;i<nums.length;i++){
        {t:"LeetCode: Trees", u:"https://leetcode.com/tag/tree/"}
      ],
      todos:[
-       "DFS/BFS templates",
-       "LCA; Topological sort"
+       "Review Tree & Graph basics (terminologies, representations)",
+       "Implement recursive tree traversals (In-order, Pre-order, Post-order)",
+       "Code iterative DFS (Stack) and BFS (Queue) templates"
      ],
      questions:[
        {q:"BFS shortest path",
@@ -567,7 +569,7 @@ function build(){
   Object.keys(plan).forEach(id=>{
     document.getElementById('w'+plan[id].week).appendChild(dayCard(id));
   });
-  updateWeekPills();updateBar();highlightToday();
+  updateWeekPills();updateBar();
 }
 
 function updateWeekPills(){
