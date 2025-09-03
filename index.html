@@ -5,35 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Java Developer 30-Day Interview Prep Tracker</title>
 <style>
-    .calendar {
-  display:grid;
-  grid-template-columns: repeat(7,1fr);
-  gap:6px;
-  margin:20px 0;
-}
-.calendar .cell {
-  border:1px solid var(--line);
-  border-radius:8px;
-  padding:8px;
-  text-align:center;
-  font-size:.85rem;
-  cursor:pointer;
-  background:var(--card);
-  transition:.2s;
-}
-.calendar .cell.done {
-  background:#22c55e;
-  color:#fff;
-  border-color:#16a34a;
-}
-.calendar .cell:hover {
-  transform:scale(1.05);
-}
-body.dark .calendar .cell {
-  background:#222;
-  border-color:#444;
-}
-
   :root{
     --brand:#72246c; --ink:#222; --muted:#666; --bg:#f5f6f8; --card:#ffffff; --line:#e9e9ee; --accent:#3b82f6;
   }
@@ -41,7 +12,7 @@ body.dark .calendar .cell {
     --bg:#121212; --ink:#eee; --muted:#aaa; --card:#1e1e1e; --line:#333; --accent:#60a5fa;
   }
   *{box-sizing:border-box}
-  body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+  body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5;}
   header{background:var(--brand);color:#fff;padding:18px}
   header h1{margin:0;font-size:1.4rem}
   header p{margin:.4rem 0 0;opacity:.9}
@@ -57,7 +28,6 @@ body.dark .calendar .cell {
   .bar{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--accent),#22c55e)}
   .grid{display:flex;flex-wrap:wrap;gap:16px}
   .grid .day{flex:1 1 calc(50% - 16px)}
-  @media(max-width:760px){.grid .day{flex:1 1 100%}}
   .day{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,.04);position:relative}
   .day.highlight{border:2px solid var(--accent);box-shadow:0 0 10px var(--accent)}
   .day h2{margin:0 0 8px;font-size:1.05rem;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
@@ -69,7 +39,7 @@ body.dark .calendar .cell {
   .pill{background:#eef2ff;color:#3730a3;border:1px solid #c7d2fe;padding:3px 8px;border-radius:999px;font-size:.75rem}
   body.dark .pill{background:#333;color:#c7d2fe;border-color:#555}
   label.chk{display:flex;gap:10px;align-items:flex-start;padding:6px 0}
-  input[type="checkbox"]{width:20px;height:20px}
+  input[type="checkbox"]{width:20px;height:20px;flex-shrink:0;}
   h3{margin:10px 0 6px;font-size:.95rem}
   pre{margin:6px 0 0;background:#0b1220;color:#e6edf3;padding:10px;border-radius:10px;overflow:auto;font-size:.85rem}
   textarea.notes{width:100%;min-height:60px;margin-top:8px;padding:8px;border-radius:8px;border:1px solid var(--line);font-size:.9rem}
@@ -78,6 +48,160 @@ body.dark .calendar .cell {
   mark{background:yellow;color:inherit}
   .footer{margin:18px 0;color:var(--muted);font-size:.9rem}
   .streak{font-weight:bold}
+  
+  .calendar {
+    display:grid;
+    grid-template-columns: repeat(7,1fr);
+    gap:6px;
+    margin:20px 0;
+  }
+  .calendar .cell {
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:8px;
+    text-align:center;
+    font-size:.85rem;
+    cursor:pointer;
+    background:var(--card);
+    transition:.2s;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .calendar .cell.done {
+    background:#22c55e;
+    color:#fff;
+    border-color:#16a34a;
+  }
+  .calendar .cell:hover {
+    transform:scale(1.05);
+  }
+  body.dark .calendar .cell {
+    background:#222;
+    border-color:#444;
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .wrap {
+      padding: 12px;
+    }
+    
+    header {
+      padding: 12px;
+    }
+    
+    header h1 {
+      font-size: 1.2rem;
+    }
+    
+    .toolbar {
+      gap: 8px;
+    }
+    
+    .toolbar input[type="search"] {
+      min-width: 100%;
+      order: -1;
+    }
+    
+    .btn {
+      padding: 6px 8px;
+      font-size: 0.8rem;
+    }
+    
+    .grid .day {
+      flex: 1 1 100%;
+    }
+    
+    .day {
+      padding: 12px;
+      border-radius: 12px;
+    }
+    
+    .day h2 {
+      font-size: 1rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    
+    .status-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    
+    .controls {
+      width: 100%;
+      justify-content: space-between;
+    }
+    
+    .tag {
+      font-size: 0.75rem;
+      padding: 3px 6px;
+    }
+    
+    label.chk {
+      font-size: 0.9rem;
+      gap: 8px;
+    }
+    
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+    }
+    
+    pre {
+      font-size: 0.8rem;
+      padding: 8px;
+      overflow-x: auto;
+    }
+    
+    textarea.notes {
+      min-height: 50px;
+      font-size: 0.85rem;
+    }
+    
+    .calendar {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+    }
+    
+    .calendar .cell {
+      padding: 6px;
+      font-size: 0.8rem;
+    }
+    
+    details.week summary {
+      padding: 6px 10px;
+      font-size: 0.95rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .calendar {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .calendar .cell {
+      padding: 4px;
+      font-size: 0.75rem;
+    }
+    
+    .btn {
+      padding: 5px 6px;
+      font-size: 0.75rem;
+    }
+    
+    .tag {
+      font-size: 0.7rem;
+    }
+    
+    pre {
+      font-size: 0.75rem;
+    }
+  }
 </style>
 </head>
 <body>
@@ -107,8 +231,7 @@ body.dark .calendar .cell {
     Progress & notes saved in <b>localStorage</b>. Export regularly to keep backups.
   </div>
   <h2>📅 Calendar View</h2>
-<div class="calendar" id="calendar"></div>
-
+  <div class="calendar" id="calendar"></div>
 </div>
 
 <script>
@@ -522,7 +645,6 @@ while(!q.isEmpty()){ int u=q.poll();
      questions:[]}
 };
 
-
 const weeksRoot=document.getElementById('weeks');
 const weekMap={1:"Week 1 – Core Java",2:"Week 2 – Spring",3:"Week 3 – DB/Cloud",4:"Week 4 – Advanced"};
 const saved=JSON.parse(localStorage.getItem('prep-progress')||'{}');
@@ -644,7 +766,6 @@ document.getElementById('search').addEventListener('input',e=>{
   });
 });
 
-
 // expand/collapse
 document.getElementById('expandAll').onclick=()=>{document.querySelectorAll('details').forEach(d=>d.open=true);}
 document.getElementById('collapseAll').onclick=()=>{document.querySelectorAll('details').forEach(d=>d.open=false);}
@@ -716,7 +837,6 @@ function buildCalendar() {
 // build UI
 build();
 buildCalendar();
-
 </script>
 
 </body>
