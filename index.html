@@ -3,90 +3,54 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Java Developer 30-Day Interview Prep Tracker</title>
+<title>45-Day Experienced Java Developer Interview Prep</title>
 <style>
-    .calendar {
-  display:grid;
-  grid-template-columns: repeat(7,1fr);
-  gap:6px;
-  margin:20px 0;
-}
-.calendar .cell {
-  border:1px solid var(--line);
-  border-radius:8px;
-  padding:8px;
-  text-align:center;
-  font-size:.85rem;
-  cursor:pointer;
-  background:var(--card);
-  transition:.2s;
-}
-.calendar .cell.done {
-  background:#22c55e;
-  color:#fff;
-  border-color:#16a34a;
-}
-.calendar .cell:hover {
-  transform:scale(1.05);
-}
-body.dark .calendar .cell {
-  background:#222;
-  border-color:#444;
-}
-
-  :root{
-    --brand:#72246c; --ink:#222; --muted:#666; --bg:#f5f6f8; --card:#ffffff; --line:#e9e9ee; --accent:#3b82f6;
-  }
-  body.dark {
-    --bg:#121212; --ink:#eee; --muted:#aaa; --card:#1e1e1e; --line:#333; --accent:#60a5fa;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
-  header{background:var(--brand);color:#fff;padding:18px}
-  header h1{margin:0;font-size:1.4rem}
-  header p{margin:.4rem 0 0;opacity:.9}
-  .wrap{max-width:1000px;margin:0 auto;padding:18px}
-  .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:8px 0 16px}
-  .toolbar input[type="search"]{flex:1;min-width:220px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
-  body.dark .toolbar input[type="search"]{background:#222;color:#eee;border-color:#444}
-  .btn{appearance:none;border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;cursor:pointer;color:var(--ink);font-size:.85rem}
-  .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
-  body.dark .btn{background:#222;color:#eee;border-color:#444}
-  .progress{background:#e8e8ef;border-radius:999px;height:10px;position:relative;overflow:hidden;margin-top:6px}
-  body.dark .progress{background:#333}
-  .bar{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--accent),#22c55e)}
-  .grid {
-    display: grid;
-    gap: 16px;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  }
-  .day{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,.04);position:relative}
-  .day.highlight{border:2px solid var(--accent);box-shadow:0 0 10px var(--accent)}
-  .day h2{margin:0 0 8px;font-size:1.05rem;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-  .status-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;margin:6px 0}
-  .controls{display:flex;gap:6px;flex-wrap:wrap}
-  .tag{display:inline-flex;align-items:center;gap:6px;background:#f0f2f7;border:1px solid var(--line);padding:4px 8px;border-radius:999px;font-size:.78rem;color:#333;text-decoration:none}
-  .tag:hover{background:#e8ebf3}
-  body.dark .tag{background:#222;border-color:#444;color:#eee}
-  .pill{background:#eef2ff;color:#3730a3;border:1px solid #c7d2fe;padding:3px 8px;border-radius:999px;font-size:.75rem}
-  body.dark .pill{background:#333;color:#c7d2fe;border-color:#555}
-  label.chk{display:flex;gap:10px;align-items:flex-start;padding:6px 0}
-  input[type="checkbox"]{width:20px;height:20px}
-  h3{margin:10px 0 6px;font-size:.95rem}
-  pre{margin:6px 0 0;background:#0b1220;color:#e6edf3;padding:10px;border-radius:10px;overflow:auto;font-size:.85rem}
-  textarea.notes{width:100%;min-height:60px;margin-top:8px;padding:8px;border-radius:8px;border:1px solid var(--line);font-size:.9rem}
-  details.week summary{cursor:pointer;list-style:none;font-weight:600;margin:8px 0;padding:8px 12px;border-radius:10px;background:#ffffff;border:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
-  body.dark details.week summary{background:#222;border-color:#444}
-  mark{background:yellow;color:inherit}
-  .footer{margin:18px 0;color:var(--muted);font-size:.9rem}
-  .streak{font-weight:bold}
+    .calendar { display:grid; grid-template-columns: repeat(7,1fr); gap:6px; margin:20px 0; }
+    .calendar .cell { border:1px solid var(--line); border-radius:8px; padding:8px; text-align:center; font-size:.85rem; cursor:pointer; background:var(--card); transition:.2s; }
+    .calendar .cell.done { background:#22c55e; color:#fff; border-color:#16a34a; }
+    .calendar .cell:hover { transform:scale(1.05); }
+    body.dark .calendar .cell { background:#222; border-color:#444; }
+    :root{ --brand:#72246c; --ink:#222; --muted:#666; --bg:#f5f6f8; --card:#ffffff; --line:#e9e9ee; --accent:#3b82f6; }
+    body.dark { --bg:#121212; --ink:#eee; --muted:#aaa; --card:#1e1e1e; --line:#333; --accent:#60a5fa; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+    header{background:var(--brand);color:#fff;padding:18px}
+    header h1{margin:0;font-size:1.4rem}
+    header p{margin:.4rem 0 0;opacity:.9}
+    .wrap{max-width:1000px;margin:0 auto;padding:18px}
+    .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:8px 0 16px}
+    .toolbar input[type="search"]{flex:1;min-width:220px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+    body.dark .toolbar input[type="search"]{background:#222;color:#eee;border-color:#444}
+    .btn{appearance:none;border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;cursor:pointer;color:var(--ink);font-size:.85rem}
+    body.dark .btn{background:#222;color:#eee;border-color:#444}
+    .progress{background:#e8e8ef;border-radius:999px;height:10px;position:relative;overflow:hidden;margin-top:6px}
+    body.dark .progress{background:#333}
+    .bar{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--accent),#22c55e)}
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+    .day{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,.04);position:relative}
+    .day.highlight{border:2px solid var(--accent);box-shadow:0 0 10px var(--accent)}
+    .day h2{margin:0 0 8px;font-size:1.05rem;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .status-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;margin:6px 0}
+    .controls{display:flex;gap:6px;flex-wrap:wrap}
+    .tag{display:inline-flex;align-items:center;gap:6px;background:#f0f2f7;border:1px solid var(--line);padding:4px 8px;border-radius:999px;font-size:.78rem;color:#333;text-decoration:none}
+    body.dark .tag{background:#222;border-color:#444;color:#eee}
+    .pill{background:#eef2ff;color:#3730a3;border:1px solid #c7d2fe;padding:3px 8px;border-radius:999px;font-size:.75rem}
+    body.dark .pill{background:#333;color:#c7d2fe;border-color:#555}
+    label.chk{display:flex;gap:10px;align-items:flex-start;padding:6px 0}
+    input[type="checkbox"]{width:20px;height:20px}
+    h3{margin:10px 0 6px;font-size:.95rem}
+    pre{margin:6px 0 0;background:#0b1220;color:#e6edf3;padding:10px;border-radius:10px;overflow:auto;font-size:.85rem}
+    textarea.notes{width:100%;min-height:60px;margin-top:8px;padding:8px;border-radius:8px;border:1px solid var(--line);font-size:.9rem}
+    details.week summary{cursor:pointer;list-style:none;font-weight:600;margin:8px 0;padding:8px 12px;border-radius:10px;background:var(--card);border:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+    body.dark details.week summary{background:#222;border-color:#444}
+    .footer{margin:18px 0;color:var(--muted);font-size:.9rem}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <h1>Java Developer 30-Day Interview Prep Tracker</h1>
+    <h1>45-Day Experienced Java Developer Interview Prep</h1>
     <p>Track your progress daily. <span class="streak" id="streak">Streak: 0 days</span></p>
     <div class="progress" aria-label="overall progress"><div class="bar" id="bar"></div></div>
   </div>
@@ -94,203 +58,259 @@ body.dark .calendar .cell {
 
 <div class="wrap">
   <div class="toolbar">
-    <input id="search" type="search" placeholder="Search tasks, questions, or topics…"/>
+    <input id="search" type="search" placeholder="Search tasks, topics, or code..."/>
     <button class="btn" id="expandAll">Expand all</button>
     <button class="btn" id="collapseAll">Collapse all</button>
     <button class="btn" id="resetTicks">Reset</button>
     <button class="btn" id="exportBtn">Export JSON</button>
-    <button class="btn" id="exportMd">Export Markdown</button>
     <input type="file" id="importFile" hidden/>
     <button class="btn" id="importBtn">Import</button>
     <button class="btn" id="darkToggle">🌙 Dark Mode</button>
   </div>
   <div id="weeks"></div>
   <div class="footer">
-    Progress & notes saved in <b>localStorage</b>. Export regularly to keep backups.
+    Progress is saved locally. Export regularly to create backups.
   </div>
   <h2>📅 Calendar View</h2>
-<div class="calendar" id="calendar"></div>
-
+  <div class="calendar" id="calendar"></div>
 </div>
 
 <script>
 const plan = {
-  // -------- Week 1: Core Java Mastery --------
-  1: { week: 1, topic: "OOP Principles & Java Basics",
-       resources: [{ t: "Oracle: OOP Concepts", u: "https://docs.oracle.com/javase/tutorial/java/concepts/index.html" }],
-       todos: [ "Read about the 4 OOP principles (e.g., Encapsulation).", "Write a class that demonstrates encapsulation.", "Practice creating and modifying strings with `StringBuilder`." ],
-       questions: [{ q: "Demonstrate polymorphism using an interface.", code: `interface Shape { void draw(); }\nclass Circle implements Shape { public void draw() { /*...*/ } }\nShape myShape = new Circle();` }]
+  // -------- Week 1: Advanced Java & Concurrency --------
+  1: { week: 1, topic: "Modern Java Features (8-17)",
+       todos: [ "Analyze performance implications of parallel Streams.", "Refactor code to use Java 11+ features (`var`, new String/Files methods).", "Implement a data class using `record` and understand its generated methods." ],
+       questions: [{ q: "Refactor this code to use `Collectors.groupingBy` and `counting`.", code: `Map<String, Integer> counts = new HashMap<>();\nfor(Person p : people) {\n  counts.put(p.getCity(), counts.getOrDefault(p.getCity(), 0) + 1);\n}` }]
   },
-  2: { week: 1, topic: "Java Collections Framework",
-       resources: [{ t: "Baeldung: Java Collections", u: "https://www.baeldung.com/java-collections" }],
-       todos: [ "Write code that uses `ArrayList`, `HashSet`, and `HashMap`.", "Read about the differences between each collection type.", "Use `Collections.sort()` on an `ArrayList`." ],
-       questions: [{ q: "Explain the internal working of a HashMap.", code: `// 1. hashCode() -> hash\n// 2. hash -> index\n// 3. Store Entry(key, value) in bucket (LinkedList/Tree)` }]
+  2: { week: 1, topic: "JVM Internals & GC Tuning",
+       todos: [ "Read about the structure of the JVM (Heap, Stack, Metaspace).", "Explain the difference between G1, ZGC, and Shenandoah garbage collectors.", "Use VisualVM to inspect a running Java application's memory usage." ],
+       questions: [{ q: "What is 'Stop-the-World' in the context of Garbage Collection?", code: `// A pause in the application execution where all threads are stopped\n// to allow the GC to safely modify memory.` }]
   },
-  3: { week: 1, topic: "Sorting: Comparable & Comparator",
-       resources: [{ t: "Baeldung: Comparable vs Comparator", u: "https://www.baeldung.com/java-comparator-comparable" }],
-       todos: [ "Implement the `Comparable` interface on a custom class.", "Write a separate `Comparator` class for custom sorting.", "Chain two comparators together using `thenComparing`." ],
-       questions: [{ q: "Sort a list of `Employee` objects by salary (desc) then by name (asc).", code: `employees.sort(Comparator.comparing(Employee::getSalary).reversed()\n        .thenComparing(Employee::getName));` }]
+  3: { week: 1, topic: "Advanced Concurrency",
+       todos: [ "Implement an asynchronous pipeline using `CompletableFuture`.", "Use `StampedLock` and explain its benefits over `ReadWriteLock`.", "Solve a problem using `CountDownLatch` or `CyclicBarrier`." ],
+       questions: [{ q: "Chain two asynchronous calls using `CompletableFuture`.", code: `CompletableFuture.supplyAsync(() -> fetchUser(id))\n  .thenApplyAsync(user -> fetchOrders(user.getId()));` }]
   },
-  4: { week: 1, topic: "Java 8 Features: Streams & Lambdas",
-       resources: [{ t: "Oracle: Aggregate Operations", u: "https://docs.oracle.com/javase/tutorial/collections/streams/index.html" }],
-       todos: [ "Convert a `for` loop that filters a list into a Stream.", "Use `map` to transform elements in a list.", "Rewrite a null-check using `Optional`." ],
-       questions: [{ q: "Find the employee with the highest salary from a list.", code: `Optional<Employee> maxSal = employees.stream()\n        .max(Comparator.comparing(Employee::getSalary));` }]
+  4: { week: 1, topic: "Concurrency Design Patterns",
+       todos: [ "Implement the Producer-Consumer pattern using `BlockingQueue`.", "Build a fixed-size thread pool from scratch (without `ExecutorService`).", "Read about thread-safe collection wrappers in `java.util.concurrent`." ],
+       questions: [{ q: "How would you handle backpressure in a Producer-Consumer scenario?", code: `// 1. Use a bounded BlockingQueue (put() will block).\n// 2. Use a timeout when offering to the queue.\n// 3. Drop messages (if acceptable).` }]
   },
-  5: { week: 1, topic: "Exceptions & File I/O",
-       resources: [{ t: "Oracle: Exceptions", u: "https://docs.oracle.com/javase/tutorial/essential/exceptions/" }],
-       todos: [ "Write a method that throws a custom checked exception.", "Read a file using `try-with-resources` to ensure it closes.", "Use a `try-catch-finally` block and explain its purpose." ],
-       questions: [{ q: "Create a custom checked exception.", code: `class InvalidDataException extends Exception {\n  public InvalidDataException(String message) {\n    super(message);\n  }\n}` }]
+  5: { week: 1, topic: "Effective Design Patterns",
+       todos: [ "Implement a thread-safe Singleton using double-checked locking and `volatile`.", "Refactor complex object creation using the Builder pattern.", "Implement the Factory Method pattern." ],
+       questions: [{ q: "Why is the Builder pattern often preferred over telescoping constructors?", code: `// Improves readability for many optional parameters.\n// Avoids needing a large number of overloaded constructors.\n// Allows for immutable object creation.` }]
   },
-  6: { week: 1, topic: "Concurrency Basics",
-       resources: [{ t: "Oracle: Concurrency Tutorial", u: "https://docs.oracle.com/javase/tutorial/essential/concurrency/" }],
-       todos: [ "Start a new thread using the `Runnable` interface.", "Create a simple thread pool with `ExecutorService`.", "Write a method using `synchronized` to prevent race conditions." ],
-       questions: [{ q: "Implement a simple thread-safe counter.", code: `class SafeCounter {\n  private AtomicInteger count = new AtomicInteger(0);\n  public void increment() { count.incrementAndGet(); }\n}` }]
+  6: { week: 1, topic: "Behavioral Design Patterns",
+       todos: [ "Refactor a complex `if-else` or `switch` statement using the Strategy pattern.", "Implement the Observer pattern for event notification.", "Use the Decorator pattern to add functionality to an object at runtime." ],
+       questions: [{ q: "Implement the Strategy pattern for different payment methods.", code: `interface PaymentStrategy { void pay(int amount); }\nclass CreditCardStrategy implements PaymentStrategy { ... }\nclass PayPalStrategy implements PaymentStrategy { ... }` }]
   },
-  7: { week: 1, topic: "Review & Mock Test: Core Java",
-       resources: [{ t: "HackerRank: Java", u: "https://www.hackerrank.com/domains/java" }],
-       todos: [ "Complete 5-10 Java challenges on a platform like HackerRank.", "List your top 3 weakest topics from this week.", "Review your notes specifically on those 3 topics." ],
-       questions: []
+  7: { week: 1, topic: "Performance Tuning & Profiling",
+       todos: [ "Write a microbenchmark for a method using JMH.", "Use a profiler (like VisualVM or JProfiler) to find a memory leak in a sample app.", "Analyze a thread dump to identify a deadlock." ],
+       questions: [{ q: "What is the difference between latency and throughput?", code: `// Latency: Time for a single operation to complete (e.g., ms/request).\n// Throughput: Number of operations per unit of time (e.g., requests/sec).` }]
   },
 
-  // -------- Week 2: DSA Foundations --------
-  8: { week: 2, topic: "Big O Notation & Arrays",
-       resources: [{ t: "InterviewBit: Time Complexity", u: "https://www.interviewbit.com/courses/programming/topics/time-complexity/" }],
-       todos: [ "Watch a video explaining Big O notation.", "Calculate the Big O of a simple `for` loop and a nested `for` loop.", "Solve 3 easy array problems on LeetCode." ],
-       questions: [{ q: "Find the missing number in an array of 1 to 100.", code: `int n = 100;\nint expectedSum = n * (n + 1) / 2;\nint actualSum = Arrays.stream(nums).sum();\nint missing = expectedSum - actualSum;` }]
+  // -------- Week 2: Spring Ecosystem & Microservices --------
+  8: { week: 2, topic: "Spring Boot Internals",
+       todos: [ "Create a custom Spring Boot starter with auto-configuration.", "Expose custom metrics and health checks using Spring Boot Actuator.", "Debug a Spring Boot application startup to see how auto-configuration works." ],
+       questions: [{ q: "How do you create a conditional bean using `@ConditionalOnProperty`?", code: `@Bean\n@ConditionalOnProperty(name = "feature.toggle", havingValue = "true")\npublic MyFeatureService myFeatureService() { ... }` }]
   },
-  9: { week: 2, topic: "Strings & 2-Pointer/Sliding Window",
-       resources: [{ t: "LeetCode: Two Pointers", u: "https://leetcode.com/tag/two-pointers/" }],
-       todos: [ "Solve 'Valid Palindrome' using the two-pointer method.", "Solve 'Maximum Sum Subarray of Size K' with the sliding window method.", "Practice one other string manipulation problem." ],
-       questions: [{ q: "Check if a string is a palindrome efficiently.", code: `int left = 0, right = s.length() - 1;\nwhile(left < right) {\n  if(s.charAt(left++) != s.charAt(right--)) return false;\n}\nreturn true;` }]
+  9: { week: 2, topic: "Advanced Spring Data JPA",
+       todos: [ "Implement pagination and sorting with DTO projections.", "Use the Criteria API for building dynamic, type-safe queries.", "Implement optimistic locking with `@Version` to handle concurrent updates." ],
+       questions: [{ q: "How can you solve the N+1 select problem in JPA?", code: `// 1. Use JOIN FETCH in a JPQL query.\n// 2. Use an @EntityGraph.\n// 3. Use batch fetching.` }]
   },
-  10: { week: 2, topic: "Linked Lists",
-       resources: [{ t: "GeeksforGeeks: Linked List", u: "https://www.geeksforgeeks.org/data-structures/linked-list/" }],
-       todos: [ "Code a `Node` class and a `LinkedList` class from scratch.", "Implement `add`, `remove`, and `print` methods for your list.", "Solve the 'Reverse a Linked List' problem." ],
-       questions: [{ q: "Reverse a singly linked list.", code: `ListNode prev = null;\nListNode current = head;\nwhile (current != null) {\n  ListNode nextTemp = current.next;\n  current.next = prev;\n  prev = current;\n  current = nextTemp;\n}` }]
+  10: { week: 2, topic: "Spring Security Deep Dive",
+       todos: [ "Implement a full OAuth2 login flow with a provider like Google or GitHub.", "Create a custom `AuthenticationProvider` for a specific use case.", "Secure methods using `@PreAuthorize` with Spring Expression Language (SpEL)." ],
+       questions: [{ q: "Outline the steps of a custom JWT authentication filter.", code: `// 1. Extract token from Authorization header.\n// 2. Validate the token (signature, expiration).\n// 3. Extract user details/authorities from token.\n// 4. Create an Authentication object and set it in SecurityContextHolder.` }]
   },
-  11: { week: 2, topic: "Stacks & Queues",
-       resources: [{ t: "GeeksforGeeks: Stack", u: "https://www.geeksforgeeks.org/stack-data-structure/" }],
-       todos: [ "Implement a `Stack` using an array or `LinkedList`.", "Solve 'Valid Parentheses' using a `Stack`.", "Implement a `Queue` and use it for a simple task." ],
-       questions: [{ q: "Check for balanced parentheses in an expression.", code: `Stack<Character> stack = new Stack<>();\nfor (char c : s.toCharArray()) {\n  if (c == '(') stack.push(')');\n  else if (c == '{') stack.push('}');\n  else if (stack.isEmpty() || stack.pop() != c) return false;\n}\nreturn stack.isEmpty();` }]
+  11: { week: 2, topic: "Advanced Testing Strategies",
+       todos: [ "Write an integration test using Testcontainers for a real database (e.g., PostgreSQL).", "Use `@DataJpaTest` to test only the repository layer.", "Use WireMock to mock external HTTP services in your tests." ],
+       questions: [{ q: "What is the benefit of using Testcontainers?", code: `// Provides ephemeral, lightweight instances of real services (DBs, message brokers)\n// in Docker containers for reliable integration tests.` }]
   },
-  12: { week: 2, topic: "Trees: BSTs & Traversals",
-       resources: [{ t: "GeeksforGeeks: Binary Search Tree", u: "https://www.geeksforgeeks.org/binary-search-tree-data-structure/" }],
-       todos: [ "Code a `TreeNode` and a `BinarySearchTree` class.", "Implement an `insert` method for your BST.", "Write code for pre-order, in-order, and post-order traversals." ],
-       questions: [{ q: "Find the maximum depth of a binary tree.", code: `public int maxDepth(TreeNode root) {\n  if (root == null) return 0;\n  int leftDepth = maxDepth(root.left);\n  int rightDepth = maxDepth(root.right);\n  return Math.max(leftDepth, rightDepth) + 1;\n}` }]
+  12: { week: 2, topic: "Spring WebFlux & Reactive APIs",
+       todos: [ "Convert a standard Spring MVC CRUD controller to be reactive using WebFlux.", "Use `WebClient` for non-blocking, asynchronous API calls.", "Read about the difference between `Mono` and `Flux`." ],
+       questions: [{ q: "How do you handle errors in a reactive stream?", code: `return userMono.doOnError(e -> log.error("Error fetching user", e))\n               .onErrorResume(e -> Mono.just(new DefaultUser()));` }]
   },
-  13: { week: 2, topic: "Heaps & Priority Queues",
-       resources: [{ t: "Baeldung: Java PriorityQueue", u: "https://www.baeldung.com/java-priority-queue" }],
-       todos: [ "Read about the difference between a min-heap and a max-heap.", "Create a `PriorityQueue` in Java and practice adding/removing elements.", "Solve 'Kth Largest Element in an Array'." ],
-       questions: [{ q: "Find the Kth largest element in an array.", code: `PriorityQueue<Integer> minHeap = new PriorityQueue<>();\nfor (int num : nums) {\n  minHeap.add(num);\n  if (minHeap.size() > k) {\n    minHeap.poll();\n  }\n}\nreturn minHeap.peek();` }]
+  13: { week: 2, topic: "Microservice Patterns",
+       todos: [ "Set up a Spring Cloud Gateway to route requests to multiple services.", "Externalize configuration using Spring Cloud Config Server.", "Implement a circuit breaker using Resilience4j to handle failing services." ],
+       questions: [{ q: "Explain the role of an API Gateway.", code: `// 1. Single entry point for all clients.\n// 2. Handles cross-cutting concerns (auth, rate limiting, logging).\n// 3. Simplifies client code by aggregating services.` }]
   },
-  14: { week: 2, topic: "Hashing: Maps & Sets",
-       resources: [{ t: "GeeksforGeeks: Hashing", u: "https://www.geeksforgeeks.org/hashing-data-structure/" }],
-       todos: [ "Read an article explaining how a `HashMap` works internally.", "Solve the 'Two Sum' problem using a `HashMap`.", "Solve the 'Group Anagrams' problem." ],
-       questions: [{ q: "Solve the 'Two Sum' problem.", code: `Map<Integer, Integer> map = new HashMap<>();\nfor (int i = 0; i < nums.length; i++) {\n  int complement = target - nums[i];\n  if (map.containsKey(complement)) {\n    return new int[] { map.get(complement), i };\n  }\n  map.put(nums[i], i);\n}` }]
+  14: { week: 2, topic: "Messaging with Kafka/RabbitMQ",
+       todos: [ "Write a Spring application that produces and consumes messages from a Kafka topic.", "Configure a Dead-Letter Queue (DLQ) in RabbitMQ for failed messages.", "Compare the use cases for Kafka vs. RabbitMQ." ],
+       questions: [{ q: "What is consumer idempotency and why is it important?", code: `// The ability for a consumer to process the same message multiple times\n// with the same result. Crucial for "at-least-once" delivery systems\n// to prevent duplicate processing.` }]
   },
 
-  // -------- Week 3: Building with Spring --------
-  15: { week: 3, topic: "Spring Core & Spring Boot",
-       resources: [{ t: "Spring Docs: Core", u: "https://docs.spring.io/spring-framework/reference/core.html" }],
-       todos: [ "Read about Dependency Injection in Spring.", "Create a Spring Boot project and define a bean with `@Component`.", "Inject a bean into another using `@Autowired`." ],
-       questions: [{ q: "How do you define a bean in Spring?", code: `@Configuration\npublic class AppConfig {\n  @Bean\n  public MyService myService() {\n    return new MyServiceImpl();\n  }\n}` }]
+  // -------- Week 3: Database Mastery --------
+  15: { week: 3, topic: "Advanced SQL",
+       todos: [ "Write a query using Common Table Expressions (CTEs) to simplify a complex query.", "Use window functions (`RANK`, `LEAD`, `LAG`) to perform calculations across sets of rows.", "Practice using `GROUP BY` with `HAVING` for aggregated filtering." ],
+       questions: [{ q: "Write a query to find the running total of sales per month.", code: `SELECT month, monthly_sales,\nSUM(monthly_sales) OVER (ORDER BY month) as running_total\nFROM monthly_sales_table;` }]
   },
-  16: { week: 3, topic: "Building REST APIs with Spring MVC",
-       resources: [{ t: "Spring Guide: Building a RESTful Web Service", u: "https://spring.io/guides/gs/rest-service/" }],
-       todos: [ "Create a `@RestController` class.", "Add `@GetMapping` and `@PostMapping` methods.", "Test your endpoints using a tool like Postman or Insomnia." ],
-       questions: [{ q: "Create a simple GET endpoint.", code: `@RestController\npublic class MyController {\n  @GetMapping("/hello/{name}")\n  public String sayHello(@PathVariable String name) {\n    return "Hello, " + name;\n  }\n}` }]
+  16: { week: 3, topic: "SQL Performance & Indexing",
+       todos: [ "Use `EXPLAIN ANALYZE` on a slow query to understand its execution plan.", "Design and add a multi-column (composite) index to optimize a query.", "Read about the difference between a B-Tree index and a Hash index." ],
+       questions: [{ q: "What is a covering index?", code: `// An index that contains all the columns required to satisfy a query,\n// so the database doesn't need to access the actual table data.` }]
   },
-  17: { week: 3, topic: "Spring Data JPA & Transactions",
-       resources: [{ t: "Spring Docs: Data JPA", u: "https://docs.spring.io/spring-data/jpa/reference/html/" }],
-       todos: [ "Define an `@Entity` class.", "Create a `JpaRepository` interface for your entity.", "Use the repository to save and find data in your code." ],
-       questions: [{ q: "Define a custom query method in a repository.", code: `public interface UserRepository extends JpaRepository<User, Long> {\n  Optional<User> findByEmail(String email);\n}` }]
+  17: { week: 3, topic: "Database Design & Normalization",
+       todos: [ "Design the database schema for a simple blog application (users, posts, comments, tags).", "Explain the first three normal forms (1NF, 2NF, 3NF).", "Discuss the trade-offs of normalization vs. denormalization." ],
+       questions: [{ q: "How would you model a many-to-many relationship, like posts and tags?", code: `// Using a join table (e.g., 'post_tags') with two columns:\n// 'post_id' (foreign key to posts table)\n// 'tag_id' (foreign key to tags table)` }]
   },
-  18: { week: 3, topic: "Spring Security",
-       resources: [{ t: "Baeldung: Spring Security", u: "https://www.baeldung.com/security-spring" }],
-       todos: [ "Add the Spring Security starter to your project.", "Configure a basic security rule to protect all endpoints.", "Read an article about how JWT authentication works." ],
-       questions: [{ q: "Configure a basic security filter chain.", code: `@Bean\npublic SecurityFilterChain filterChain(HttpSecurity http) throws Exception {\n  http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated());\n  return http.build();\n}` }]
+  18: { week: 3, topic: "Transactions & Concurrency",
+       todos: [ "Explain all four ACID properties.", "Describe the different transaction isolation levels (e.g., Read Committed, Repeatable Read).", "Write code that demonstrates a phantom read and explain how to prevent it." ],
+       questions: [{ q: "What is the difference between optimistic and pessimistic locking?", code: `// Optimistic: Assumes conflicts are rare. Checks for changes before commit (e.g., @Version).\n// Pessimistic: Assumes conflicts are likely. Locks the data row on read (e.g., SELECT ... FOR UPDATE).` }]
   },
-  19: { week: 3, topic: "Project: Build & Validate API",
-       resources: [],
-       todos: [ "Create a new Spring Boot project for a mini-API.", "Add validation annotations like `@NotBlank` to your request classes.", "Create a `@ControllerAdvice` class to handle exceptions gracefully." ],
-       questions: [{ q: "Add validation to a request DTO.", code: `public class CreateTaskDto {\n  @NotBlank\n  @Size(min = 3)\n  private String title;\n  // getters and setters\n}` }]
+  19: { week: 3, topic: "Introduction to NoSQL",
+       todos: [ "Explain the CAP theorem and its implications.", "Compare the four main types of NoSQL databases (Key-Value, Document, Column-Family, Graph).", "Discuss when you would choose a NoSQL database over a relational one." ],
+       questions: [{ q: "In the CAP Theorem, which two properties do most relational databases prioritize?", code: `// C (Consistency) and A (Availability). They may sacrifice P (Partition Tolerance)\n// by running on a single, non-distributed server.` }]
   },
-  20: { week: 3, topic: "Project: Secure & Test API",
-       resources: [{ t: "Baeldung: Spring Boot Testing", u: "https://www.baeldung.com/spring-boot-testing" }],
-       todos: [ "Secure the endpoints of your mini-project.", "Write a unit test for a service method using `Mockito`.", "Write an integration test for a controller endpoint." ],
-       questions: [{ q: "How do you mock a service in a unit test?", code: `@ExtendWith(MockitoExtension.class)\nclass MyServiceTest {\n  @Mock\n  private MyRepository repository;\n  @InjectMocks\n  private MyService service;\n}` }]
+  20: { week: 3, topic: "Deep Dive: Redis",
+       todos: [ "Implement caching for a Spring Boot application using Redis.", "Use Redis for session management.", "Practice using different Redis data structures (Hashes, Sorted Sets, Lists)." ],
+       questions: [{ q: "How can you use Redis to implement a rate limiter?", code: `// Use the INCR command on a key like 'user:123:requests'.\n// If the count is 1, set an expiry (e.g., EXPIRE key 60).\n// If the count exceeds a limit, reject the request.` }]
   },
-  21: { week: 3, topic: "Containerize with Docker",
-       resources: [{ t: "Docker Docs: Get Started", u: "https://docs.docker.com/get-started/" }],
-       todos: [ "Create a `Dockerfile` for your Spring Boot project.", "Build a Docker image from the `Dockerfile`.", "Run the Docker image as a container and test it." ],
-       questions: [{ q: "Write a simple Dockerfile for a Java app.", code: `FROM eclipse-temurin:17-jre\nWORKDIR /app\nCOPY target/app.jar app.jar\nEXPOSE 8080\nENTRYPOINT ["java","-jar","app.jar"]` }]
+  21: { week: 3, topic: "Database Migration Tools",
+       todos: [ "Set up a Spring Boot project with Flyway or Liquibase.", "Write a migration script to add a new table and another to add a column.", "Practice rolling back a migration." ],
+       questions: [{ q: "Why are database migration tools important in a team environment?", code: `// They version control the database schema, ensuring consistency across\n// all developer machines and deployment environments.` }]
+  },
+  
+  // -------- Week 4: In-Depth Frontend with React --------
+  22: { week: 4, topic: "Modern React & JSX",
+       todos: [ "Build a small project using `create-react-app` or Vite.", "Create reusable presentational and container components.", "Practice passing data and functions between components using props." ],
+       questions: [{ q: "What is the difference between state and props in React?", code: `// Props: Data passed down from a parent component (immutable).\n// State: Data managed within a component (mutable, causes re-renders).` }]
+  },
+  23: { week: 4, topic: "React Hooks Deep Dive",
+       todos: [ "Fetch data from a backend API using `useEffect` and manage loading/error states.", "Manage complex component state with the `useState` hook.", "Share state between components using the `useContext` hook." ],
+       questions: [{ q: "Why do we pass a dependency array to `useEffect`?", code: `useEffect(() => {\n  // This effect runs only when 'someValue' changes.\n}, [someValue]);` }]
+  },
+  24: { week: 4, topic: "Advanced React Hooks",
+       todos: [ "Refactor a component with complex state logic to use `useReducer`.", "Optimize expensive calculations using `useMemo`.", "Prevent unnecessary function re-creations using `useCallback`." ],
+       questions: [{ q: "Create a custom hook `useFetch` to handle data fetching.", code: `function useFetch(url) {\n  const [data, setData] = useState(null);\n  const [loading, setLoading] = useState(true);\n  // ... useEffect logic ...\n  return { data, loading };\n}` }]
+  },
+  25: { week: 4, topic: "State Management",
+       todos: [ "Build a simple to-do list application using Redux Toolkit for state management.", "Explain the Redux data flow (Action -> Reducer -> Store).", "Discuss when to use Redux vs. the built-in Context API." ],
+       questions: [{ q: "What is the purpose of a Redux 'slice'?", code: `// A slice, created with 'createSlice', bundles together the reducer logic,\n// action creators, and initial state for a specific piece of the application state.` }]
+  },
+  26: { week: 4, topic: "Routing with React Router",
+       todos: [ "Implement client-side routing in an application using React Router.", "Create nested routes for a master-detail UI.", "Implement a protected route that redirects unauthenticated users." ],
+       questions: [{ q: "How do you get URL parameters in a component using React Router?", code: `import { useParams } from 'react-router-dom';\n\nfunction UserProfile() {\n  let { userId } = useParams();\n  // ...\n}` }]
+  },
+  27: { week: 4, topic: "React Performance Optimization",
+       todos: [ "Use the React Developer Tools profiler to identify performance bottlenecks.", "Wrap components with `React.memo` to prevent unnecessary re-renders.", "Read about code splitting with `React.lazy` and Suspense." ],
+       questions: [{ q: "When should you use `useMemo` vs. `React.memo`?", code: `// useMemo: Memoizes the result of a calculation inside a component.\n// React.memo: A Higher-Order Component that memoizes the entire rendered\n// output of a component, preventing re-renders if props are the same.` }]
+  },
+  28: { week: 4, topic: "Testing React Apps",
+       todos: [ "Set up Jest and React Testing Library in a project.", "Write tests for a simple component, checking for text content.", "Write tests for user interactions, like clicking a button and checking the result." ],
+       questions: [{ q: "How would you test a component that fetches data?", code: `// Use a library like Mock Service Worker (MSW) or Jest's mocking\n// capabilities to mock the API call and return fake data.` }]
   },
 
-  // -------- Week 4: Advanced Concepts & Interview Readiness --------
-  22: { week: 4, topic: "Advanced Algorithms: DP",
-       resources: [{ t: "LeetCode: DP Study Plan", u: "https://leetcode.com/study-plan/dynamic-programming/" }],
-       todos: [ "Read about the concept of memoization in DP.", "Write a recursive Fibonacci solution, then add a cache (memoization).", "Convert the memoized solution to a bottom-up (tabulation) one." ],
-       questions: [{ q: "Write a tabulated (bottom-up) solution for Fibonacci.", code: `int[] dp = new int[n + 1];\ndp[0] = 0; dp[1] = 1;\nfor(int i = 2; i <= n; i++) {\n  dp[i] = dp[i-1] + dp[i-2];\n}\nreturn dp[n];` }]
+  // -------- Week 5: Cloud & DevOps --------
+  29: { week: 5, topic: "Cloud & AWS Core Services",
+       todos: [ "Design a simple, secure Virtual Private Cloud (VPC) with public and private subnets.", "Explain the principle of least privilege in IAM.", "Launch an EC2 instance and connect to it." ],
+       questions: [{ q: "What is the difference between an EC2 instance and an S3 bucket?", code: `// EC2: A virtual server for running applications (compute).\n// S3: An object storage service for storing files (storage).` }]
   },
-  23: { week: 4, topic: "Advanced Algorithms: Graphs",
-       resources: [{ t: "GeeksforGeeks: Graph", u: "https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/" }],
-       todos: [ "Create a graph in code using an adjacency list.", "Implement a BFS traversal for your graph.", "Implement a DFS traversal for your graph." ],
-       questions: [{ q: "How do you represent a graph using an Adjacency List?", code: `Map<Integer, List<Integer>> adjList = new HashMap<>();\n// For each vertex, store a list of its neighbors.` }]
+  30: { week: 5, topic: "Advanced Docker",
+       todos: [ "Write a multi-stage Dockerfile to create a small production image for a Java app.", "Use Docker Compose to run a multi-container application (e.g., your app and a database).", "Read about Docker networking (bridge, host, overlay)." ],
+       questions: [{ q: "Why use a multi-stage Dockerfile?", code: `// It separates the build environment from the runtime environment,\n// resulting in a much smaller and more secure final image by excluding\n// build tools like the JDK and Maven.` }]
   },
-  24: { week: 4, topic: "SQL Deep Dive",
-       resources: [{ t: "Use The Index, Luke!", u: "https://use-the-index-luke.com/" }],
-       todos: [ "Write a SQL query that uses an `INNER JOIN` and a `LEFT JOIN`.", "Write a query using `RANK()` to find the top N items in groups.", "Read an article about how database indexes work." ],
-       questions: [{ q: "Find the 2nd highest salary per department.", code: `SELECT * FROM (\n  SELECT name, salary, department,\n  DENSE_RANK() OVER (PARTITION BY department ORDER BY salary DESC) as rnk\n  FROM employees\n) tmp WHERE rnk = 2;` }]
+  31: { week: 5, topic: "Kubernetes Fundamentals",
+       todos: [ "Set up a local Kubernetes cluster (Minikube, Docker Desktop).", "Write a Kubernetes manifest for a `Deployment` and a `Service`.", "Deploy your application to the local cluster and expose it." ],
+       questions: [{ q: "What is the difference between a Pod, a Deployment, and a Service in Kubernetes?", code: `// Pod: The smallest deployable unit, usually holds one container.\n// Deployment: Manages Pods, handles scaling and updates.\n// Service: Provides a stable network endpoint (IP/DNS) to access Pods.` }]
   },
-  25: { week: 4, topic: "Cloud & AWS Basics",
-       resources: [{ t: "AWS Docs: What is Cloud Computing?", u: "https://aws.amazon.com/what-is-cloud-computing/" }],
-       todos: [ "Read the AWS overview for EC2, S3, and IAM.", "Create a free-tier AWS account if you don't have one.", "Write a small Java program to list S3 buckets using the AWS SDK." ],
-       questions: [{ q: "How would you upload a file to S3 using the AWS SDK for Java?", code: `S3Client s3 = S3Client.create();\ns3.putObject(PutObjectRequest.builder().bucket(B).key(K).build(),\n             RequestBody.fromFile(new File(F)));` }]
+  32: { week: 5, topic: "Advanced Kubernetes",
+       todos: [ "Use `ConfigMaps` and `Secrets` to manage application configuration and credentials.", "Configure an `Ingress` controller to route external traffic to your services.", "Read about Kubernetes health probes (liveness, readiness)." ],
+       questions: [{ q: "How do you perform a zero-downtime rolling update with a Deployment?", code: `// By default, a Deployment uses a 'RollingUpdate' strategy. When you apply\n// a new image version, it gradually terminates old Pods while creating new ones.` }]
   },
-  26: { week: 4, topic: "System Design Fundamentals",
-       resources: [{ t: "GitHub: System Design Primer", u: "https://github.com/donnemartin/system-design-primer" }],
-       todos: [ "Watch a video of a 'URL Shortener' system design interview.", "Draw a diagram of the main components (API, cache, DB).", "List potential problems or bottlenecks in your design." ],
-       questions: [{ q: "Outline the high-level components for a URL shortener.", code: `// 1. API Gateway (Rate Limiting)\n// 2. Web Servers (Stateless)\n// 3. Hashing Service (Generates short code)\n// 4. Caching Layer (e.g., Redis)\n// 5. Database (e.g., NoSQL for scale)` }]
+  33: { week: 5, topic: "CI/CD Pipelines",
+       todos: [ "Create a GitHub Actions workflow that automatically builds and tests your application on every push.", "Extend the workflow to build and push a Docker image to a registry (e.g., Docker Hub).", "Read about different deployment strategies (Blue-Green, Canary)." ],
+       questions: [{ q: "What is the purpose of a CI/CD pipeline?", code: `// To automate the process of building, testing, and deploying software,\n// which increases speed and reduces human error.` }]
   },
-  27: { week: 4, topic: "Microservices Concepts",
-       resources: [{ t: "Microservices.io", u: "https://microservices.io/" }],
-       todos: [ "Read an article comparing monoliths and microservices.", "Draw a diagram showing how an API Gateway routes requests.", "List three challenges of using microservices." ],
-       questions: [{ q: "How do services communicate in a microservice architecture?", code: `// 1. Synchronous: REST APIs, gRPC\n// 2. Asynchronous: Message Queues (RabbitMQ, Kafka)` }]
+  34: { week: 5, topic: "Infrastructure as Code (IaC)",
+       todos: [ "Install Terraform and configure it for your AWS account.", "Write a Terraform script to provision an S3 bucket and an EC2 instance.", "Practice using `terraform plan` and `terraform apply`." ],
+       questions: [{ q: "Why use Infrastructure as Code instead of manually creating resources in the AWS console?", code: `// IaC provides versionable, repeatable, and automated infrastructure deployments,\n// reducing configuration drift and manual errors.` }]
   },
-  28: { week: 4, topic: "Behavioral Prep & STAR Method",
-       resources: [{ t: "Indeed: STAR Method", u: "https://www.indeed.com/career-advice/interviewing/how-to-use-the-star-interview-response-technique" }],
-       todos: [ "Write out three of your career stories using the STAR format.", "Practice reciting your 'Tell me about yourself' pitch.", "Record yourself answering one behavioral question and watch it." ],
-       questions: [{ q: "Structure an answer for 'Tell me about a time you had a conflict.'", code: `// S (Situation): Briefly describe the context.\n// T (Task): What was your responsibility?\n// A (Action): What specific steps did YOU take?\n// R (Result): What was the outcome? What did you learn?` }]
+  35: { week: 5, topic: "Observability",
+       todos: [ "Instrument a Spring Boot application with Micrometer to expose Prometheus metrics.", "Set up a local Prometheus and Grafana instance to scrape and visualize those metrics.", "Configure your application to produce structured (JSON) logs." ],
+       questions: [{ q: "What are the three pillars of observability?", code: `// 1. Logs: Detailed, timestamped records of events.\n// 2. Metrics: Aggregated numerical data over time (e.g., request count).\n// 3. Traces: Show the lifecycle of a request across multiple services.` }]
   },
-  29: { week: 4, topic: "Resume Polish & Mock Coding",
-       resources: [{ t: "LeetCode Medium", u: "https://leetcode.com/problemset/all/?difficulty=MEDIUM" }],
-       todos: [ "Tailor your resume for a specific Java developer job posting.", "Do a 45-minute timed mock coding interview (2 problems).", "After the timer, review and improve your solution." ],
-       questions: []
+
+  // -------- Week 6: System Design & Architecture --------
+  36: { week: 6, topic: "Foundations of Scalability",
+       todos: [ "Explain the difference between vertical and horizontal scaling.", "Draw diagrams for different load balancing algorithms (Round Robin, Least Connections).", "Describe various caching strategies (Cache-Aside, Read-Through, Write-Through)." ],
+       questions: [{ q: "What is the main challenge with caching?", code: `// Cache invalidation: Ensuring that stale data is removed from the cache\n// when the source of truth (the database) is updated.` }]
   },
-  30: { week: 4, topic: "Final Mock Interview",
-       resources: [{ t: "Pramp", u: "https://www.pramp.com/" }],
-       todos: [ "Schedule and complete a mock interview with a peer.", "Ask for specific feedback on your problem-solving and communication.", "Take time to review the feedback and relax." ],
-       questions: []
+  37: { week: 6, topic: "Designing Data-Intensive Apps",
+       todos: [ "Explain database replication (master-slave) and sharding.", "Discuss different data consistency patterns (strong, eventual).", "Read about the Saga pattern for managing transactions across microservices." ],
+       questions: [{ q: "When would you choose eventual consistency over strong consistency?", code: `// In systems where high availability and performance are more critical than\n// immediate data consistency, such as a social media likes count.` }]
+  },
+  38: { week: 6, topic: "System Design: E-commerce Site",
+       todos: [ "Whiteboard the high-level architecture for an e-commerce platform.", "Deep dive into the design of the product catalog service.", "Discuss how you would handle high traffic during a flash sale." ],
+       questions: [{ q: "How would you design the shopping cart service?", code: `// Could be a microservice. Data could be stored in a fast key-value store\n// like Redis, with cart data expiring after a certain time.` }]
+  },
+  39: { week: 6, topic: "System Design: Ride-Sharing App",
+       todos: [ "Design the system for matching riders with nearby drivers.", "Discuss how to handle real-time location updates from thousands of drivers.", "Whiteboard the API design for booking a ride." ],
+       questions: [{ q: "What kind of database would you use for geospatial data?", code: `// A database with geospatial indexing capabilities, like PostgreSQL with PostGIS,\n// or a specialized NoSQL database like DynamoDB with Geo Library.` }]
+  },
+  40: { week: 6, topic: "System Design: Social Media Feed",
+       todos: [ "Design the system for generating a user's news feed.", "Compare the 'fan-out on write' vs. 'fan-out on read' approaches.", "Discuss how to handle the 'celebrity' problem (users with millions of followers)." ],
+       questions: [{ q: "How would you store the social graph (who follows whom)?", code: `// A graph database (like Neo4j) is ideal for this, but it can also be\n// modeled in a relational or NoSQL database using adjacency lists.` }]
+  },
+  41: { week: 6, topic: "Asynchronous Systems",
+       todos: [ "Design a video processing pipeline that uses a message queue.", "Explain idempotency and why it's crucial for message consumers.", "Discuss how to handle failed messages and retries." ],
+       questions: [{ q: "What is the difference between a message queue and a log (like Kafka)?", code: `// Queue: Messages are typically deleted after being processed by one consumer.\n// Log: Messages are immutable and can be re-read by multiple consumers.` }]
+  },
+  42: { week: 6, topic: "API Design & Security",
+       todos: [ "Compare the use cases for REST vs. GraphQL.", "Design a REST API that includes versioning, pagination, and filtering.", "Whiteboard the OAuth2 authorization code grant flow." ],
+       questions: [{ q: "What makes a REST API 'stateless'?", code: `// Each request from a client to the server must contain all the information\n// needed to understand and complete the request. The server does not store\n// any client context (session state) between requests.` }]
+  },
+  
+  // -------- Final Days: Mock Interviews & Review --------
+  43: { week: 7, topic: "Project Review & Refinement",
+       todos: [ "Pick a past personal or professional project.", "Write a document outlining its architecture and your key contributions.", "Identify 3 things you would do differently now (e.g., architectural changes, technology choices)." ],
+       questions: [{ q: "What was the most significant technical challenge you faced on that project?", code: `// Prepare a detailed answer using the STAR method.` }]
+  },
+  44: { week: 7, topic: "Behavioral Interview Prep",
+       todos: [ "Prepare and practice 5 detailed stories about your accomplishments, challenges, and failures.", "Focus on stories that highlight leadership, collaboration, and impact.", "Practice answering 'Why do you want to work here?' for a target company." ],
+       questions: [{ q: "Tell me about a time you had a disagreement with a team member. How did you resolve it?", code: `// Use the STAR method: Situation, Task, Action, Result.\n// Focus on a positive resolution and what you learned.` }]
+  },
+  45: { week: 7, topic: "Full-Length Mock Interview",
+       todos: [ "Schedule a 2-hour mock interview session with a senior developer or peer.", "Cover a coding round, a system design round, and behavioral questions.", "Record the session, gather feedback, and identify your final areas for review." ],
+       questions: [{ q: "Do you have any questions for me?", code: `// Prepare thoughtful questions about the team, technology, challenges,\n// and culture. This shows genuine interest.` }]
   }
 };
 
 
-const weeksRoot=document.getElementById('weeks');
-const weekMap = { 1: "Week 1 – Core Java Mastery", 2: "Week 2 – DSA Foundations", 3: "Week 3 – Building with Spring", 4: "Week 4 – Interview Readiness" };
-const saved=JSON.parse(localStorage.getItem('prep-progress')||'{}');
+const weeksRoot = document.getElementById('weeks');
+const weekMap = {
+    1: "Week 1 – Advanced Java & Concurrency",
+    2: "Week 2 – Spring Ecosystem & Microservices",
+    3: "Week 3 – Database Mastery",
+    4: "Week 4 – In-Depth Frontend with React",
+    5: "Week 5 – Cloud & DevOps",
+    6: "Week 6 – System Design & Architecture",
+    7: "Final Days – Mock Interviews & Review"
+};
+const saved = JSON.parse(localStorage.getItem('prep-progress') || '{}');
+const totalDays = 45;
 
-function dayCheckedCount(id){
-  return Object.keys(saved).filter(k=>k.startsWith(`d${id}-`)&&saved[k]).length;
+function dayCheckedCount(id) {
+    return Object.keys(saved).filter(k => k.startsWith(`d${id}-`) && saved[k]).length;
 }
-function totalItems(){let n=0;Object.values(plan).forEach(d=>{n+=(d.todos?.length||0)+(d.questions?.length||0)});return n;}
-function totalChecked(){return Object.values(saved).filter(Boolean).length;}
-function updateBar(){const p=Math.round(100*totalChecked()/Math.max(1,totalItems()));document.getElementById('bar').style.width=p+"%";}
+function totalItems() {
+    let n = 0;
+    Object.values(plan).forEach(d => {
+        n += (d.todos?.length || 0) + (d.questions?.length || 0)
+    });
+    return n;
+}
+function totalChecked() {
+    return Object.values(saved).filter(Boolean).length;
+}
+function updateBar() {
+    const p = Math.round(100 * totalChecked() / Math.max(1, totalItems()));
+    document.getElementById('bar').style.width = p + "%";
+}
 
-function tagLink(r){return `<a class="tag" href="${r.u}" target="_blank">${r.t}</a>`;}
+function tagLink(r) { return `<a class="tag" href="${r.u}" target="_blank">${r.t}</a>`; }
 
-function dayCard(id){
-  const d=plan[id],todos=d.todos||[],qs=d.questions||[];
-  let html=`<div class="day" data-day="${id}">
+function dayCard(id) {
+    const d = plan[id],
+        todos = d.todos || [],
+        qs = d.questions || [];
+    let html = `<div class="day" data-day="${id}">
     <h2>Day ${id}: ${d.topic} ${(d.resources||[]).map(tagLink).join(' ')}</h2>
     <div class="status-row">
       <span class="pill">${dayCheckedCount(id)} / ${(todos.length+qs.length)||0} done</span>
@@ -299,196 +319,143 @@ function dayCard(id){
         <button class="btn" data-clear="day${id}-all">Clear</button>
       </div>
     </div>`;
-  if(todos.length){html+="<h3>To-Do</h3>";}
-  todos.forEach((t,i)=>{const key=`d${id}-t${i}`,chk=saved[key]?'checked':'';html+=`<label class="chk"><input type="checkbox" id="${key}" ${chk}/> <span>${t}</span></label>`});
-  if(qs.length){html+="<h3>Common Questions</h3>";}
-  qs.forEach((q,i)=>{const key=`d${id}-q${i}`,chk=saved[key]?'checked':'';html+=`<label class="chk"><input type="checkbox" id="${key}" ${chk}/> <span><b>${q.q}</b></span></label>${q.code ? `<pre>${q.code}</pre>` : ''}`});
-  html+=`<h3>Notes</h3><textarea class="notes" id="n${id}" placeholder="Write notes here...">${saved['n'+id]||''}</textarea>`;
-  html+="</div>";const div=document.createElement('div');div.innerHTML=html;return div.firstElementChild;
+    if (todos.length) { html += "<h3>To-Do</h3>"; }
+    todos.forEach((t, i) => { const key = `d${id}-t${i}`, chk = saved[key] ? 'checked' : ''; html += `<label class="chk"><input type="checkbox" id="${key}" ${chk}/> <span>${t}</span></label>` });
+    if (qs.length) { html += "<h3>Common Questions</h3>"; }
+    qs.forEach((q, i) => { const key = `d${id}-q${i}`, chk = saved[key] ? 'checked' : ''; html += `<label class="chk"><input type="checkbox" id="${key}" ${chk}/> <span><b>${q.q}</b></span></label>${q.code ? `<pre>${q.code}</pre>` : ''}` });
+    html += `<h3>Notes</h3><textarea class="notes" id="n${id}" placeholder="Write notes here...">${saved['n'+id]||''}</textarea>`;
+    html += "</div>";
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    return div.firstElementChild;
 }
 
-function build(){
-  weeksRoot.innerHTML='';
-  [1,2,3,4].forEach(w=>{
-    const det=document.createElement('details');det.className='week';if(w===1)det.open=true;
-    det.innerHTML=`<summary>${weekMap[w]} <span class="pill" id="wp${w}"></span></summary><div class="grid" id="w${w}"></div><h3>Weekly Reflection</h3><textarea class="notes" id="wr${w}" placeholder="What did I learn this week?">${saved['wr'+w]||''}</textarea>`;
-    weeksRoot.appendChild(det);
-  });
-  Object.keys(plan).forEach(id=>{
-    document.getElementById('w'+plan[id].week).appendChild(dayCard(id));
-  });
-  updateWeekPills();updateBar();
-}
-
-function updateWeekPills(){
-  [1,2,3,4].forEach(w=>{
-    const days=Object.keys(plan).filter(d=>plan[d].week===w);
-    const total=days.map(d=> ((plan[d].todos?.length||0)+(plan[d].questions?.length||0))).reduce((a,b)=>a+b,0);
-    const done=days.map(d=> dayCheckedCount(d)).reduce((a,b)=>a+b,0);
-    const el=document.getElementById('wp'+w);
-    if(el) el.textContent=`${done}/${total}`;
-  });
-}
-function highlightToday(){
-  const today=new Date();const dayNum=(today.getDate()%30)||30;
-  const el=document.querySelector(`.day[data-day="${dayNum}"]`);
-  if(el){el.classList.add('highlight');el.scrollIntoView({behavior:'smooth',block:'center'});}
-}
-
-// save ticks & notes
-weeksRoot.addEventListener('change',e=>{
-  if(e.target.type==='checkbox'){saved[e.target.id]=e.target.checked;}
-  if(e.target.classList.contains('notes')){saved[e.target.id]=e.target.value;}
-  localStorage.setItem('prep-progress',JSON.stringify(saved));
-  updateBar();updateWeekPills();updateStreak();buildCalendar();
-});
-weeksRoot.addEventListener('input',e=>{
-  if(e.target.classList.contains('notes')){saved[e.target.id]=e.target.value;localStorage.setItem('prep-progress',JSON.stringify(saved));}
-});
-
-weeksRoot.addEventListener('click',e=>{
-  const btn=e.target.closest('button');if(!btn)return;
-  const dayId=btn.closest('.day')?.dataset.day;
-  if(dayId){
-    const keys=[];(plan[dayId].todos||[]).forEach((_,i)=>keys.push(`d${dayId}-t${i}`));
-    (plan[dayId].questions||[]).forEach((_,i)=>keys.push(`d${dayId}-q${i}`));
-    keys.forEach(k=>{
-        const el = document.getElementById(k);
-        if(el) {
-            el.checked=btn.dataset.mark?true:false;
-            saved[k] = el.checked;
+function build() {
+    weeksRoot.innerHTML = '';
+    Object.keys(weekMap).forEach(w => {
+        const det = document.createElement('details');
+        det.className = 'week';
+        if (w === '1') det.open = true;
+        det.innerHTML = `<summary>${weekMap[w]} <span class="pill" id="wp${w}"></span></summary><div class="grid" id="w${w}"></div>`;
+        weeksRoot.appendChild(det);
+    });
+    Object.keys(plan).forEach(id => {
+        const weekGrid = document.getElementById('w' + plan[id].week);
+        if (weekGrid) {
+            weekGrid.appendChild(dayCard(id));
         }
     });
-    localStorage.setItem('prep-progress',JSON.stringify(saved));
-    build();
-    buildCalendar();
-    updateStreak();
-  }
-});
-
-// streak
-function updateStreak(){
-  const days=Object.keys(plan).map(Number).sort((a,b)=>a-b);
-  let streak=0;
-  const today = new Date();
-  const todayDay = (today.getDate() % 30) || 30; // Use the same logic as highlightToday
-  
-  let startIndex = days.indexOf(todayDay);
-  if (startIndex === -1) {
-      startIndex = days.length -1;
-  }
-  
-  for(let i = startIndex; i >= 0; i--){
-    const day = days[i];
-    const todos = plan[day].todos || [];
-    const questions = plan[day].questions || [];
-    const totalTasks = todos.length + questions.length;
-    const doneCount = dayCheckedCount(day);
-    
-    if (totalTasks > 0 && doneCount === totalTasks) {
-        streak++;
-    } else if (totalTasks > 0 && doneCount > 0) {
-        // partial progress on the most recent day doesn't break the streak
-        if (i === startIndex) continue;
-        else break;
-    }
-    else {
-        break; 
-    }
-  }
-  document.getElementById('streak').textContent=`Streak: ${streak} day${streak!==1?'s':''}`;
+    updateWeekPills();
+    updateBar();
 }
-updateStreak();
 
-// search w/ highlight
-document.getElementById('search').addEventListener('input',e=>{
-  const q=e.target.value.toLowerCase();
-  const hasQuery = q.length > 0;
-  document.querySelectorAll('details').forEach(d => d.open = hasQuery);
-  document.querySelectorAll('.day').forEach(card=>{
-    card.querySelectorAll('mark').forEach(m=>{m.replaceWith(m.textContent)});
-    const textContent = card.innerText.toLowerCase();
-    const shouldDisplay = textContent.includes(q);
-    card.style.display = shouldDisplay ? '' : 'none';
-    if(hasQuery && shouldDisplay){
-      let currentHTML = card.innerHTML;
-      currentHTML = currentHTML.replace(new RegExp(`(?![^<]*>|[^<>]*<\/|[^"]*")(${q})`,'gi'), m => `<mark>${m}</mark>`);
-      card.innerHTML = currentHTML;
+function updateWeekPills() {
+    Object.keys(weekMap).forEach(w => {
+        const days = Object.keys(plan).filter(d => plan[d].week == w);
+        const total = days.map(d => ((plan[d].todos?.length || 0) + (plan[d].questions?.length || 0))).reduce((a, b) => a + b, 0);
+        const done = days.map(d => dayCheckedCount(d)).reduce((a, b) => a + b, 0);
+        const el = document.getElementById('wp' + w);
+        if (el) el.textContent = `${done}/${total}`;
+    });
+}
+
+weeksRoot.addEventListener('change', e => {
+    if (e.target.type === 'checkbox') { saved[e.target.id] = e.target.checked; }
+    if (e.target.classList.contains('notes')) { saved[e.target.id] = e.target.value; }
+    localStorage.setItem('prep-progress', JSON.stringify(saved));
+    updateBar(); updateWeekPills(); buildCalendar();
+});
+weeksRoot.addEventListener('input', e => {
+    if (e.target.classList.contains('notes')) {
+        saved[e.target.id] = e.target.value;
+        localStorage.setItem('prep-progress', JSON.stringify(saved));
     }
-  });
+});
+weeksRoot.addEventListener('click', e => {
+    const btn = e.target.closest('button'); if (!btn) return;
+    const dayId = btn.closest('.day')?.dataset.day;
+    if (dayId) {
+        const keys = [];
+        (plan[dayId].todos || []).forEach((_, i) => keys.push(`d${dayId}-t${i}`));
+        (plan[dayId].questions || []).forEach((_, i) => keys.push(`d${dayId}-q${i}`));
+        keys.forEach(k => {
+            const el = document.getElementById(k);
+            if (el) {
+                el.checked = btn.dataset.mark ? true : false;
+                saved[k] = el.checked;
+            }
+        });
+        localStorage.setItem('prep-progress', JSON.stringify(saved));
+        build(); buildCalendar();
+    }
 });
 
+document.getElementById('search').addEventListener('input', e => {
+    const q = e.target.value.toLowerCase();
+    const hasQuery = q.length > 0;
+    document.querySelectorAll('details').forEach(d => d.open = hasQuery);
+    document.querySelectorAll('.day').forEach(card => {
+        const textContent = card.innerText.toLowerCase();
+        card.style.display = textContent.includes(q) ? '' : 'none';
+    });
+});
 
-// expand/collapse
-document.getElementById('expandAll').onclick=()=>{document.querySelectorAll('details').forEach(d=>d.open=true);}
-document.getElementById('collapseAll').onclick=()=>{document.querySelectorAll('details').forEach(d=>d.open=false);}
-
-// reset
-document.getElementById('resetTicks').onclick=()=>{
-  if(!confirm('Reset ALL progress & notes?'))return;
-  localStorage.removeItem('prep-progress');
-  window.location.reload();
+document.getElementById('expandAll').onclick = () => { document.querySelectorAll('details').forEach(d => d.open = true); }
+document.getElementById('collapseAll').onclick = () => { document.querySelectorAll('details').forEach(d => d.open = false); }
+document.getElementById('resetTicks').onclick = () => {
+    if (confirm('Reset ALL progress & notes?')) {
+        localStorage.removeItem('prep-progress');
+        window.location.reload();
+    }
+};
+document.getElementById('exportBtn').onclick = () => {
+    const blob = new Blob([JSON.stringify(saved, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'prep-progress.json'; a.click();
+};
+document.getElementById('importBtn').onclick = () => document.getElementById('importFile').click();
+document.getElementById('importFile').onchange = async e => {
+    const f = e.target.files[0]; if (!f) return;
+    const txt = await f.text();
+    try {
+        const data = JSON.parse(txt);
+        Object.assign(saved, data);
+        localStorage.setItem('prep-progress', JSON.stringify(saved));
+        build(); buildCalendar();
+        alert('Progress imported!');
+    } catch { alert('Invalid file.'); }
 };
 
-// export/import
-document.getElementById('exportBtn').onclick=()=>{
-  const blob=new Blob([JSON.stringify(saved,null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='prep-progress.json';a.click();
-};
-document.getElementById('exportMd').onclick=()=>{
-  let md="# Prep Progress Export\n\n";
-  Object.keys(plan).forEach(id=>{
-    const d=plan[id];
-    md+=`## Day ${id}: ${d.topic}\n`;
-    (d.todos||[]).forEach((t,i)=>{md+=`- [${saved[`d${id}-t${i}`]?'x':' '}] ${t}\n`;});
-    (d.questions||[]).forEach((q,i)=>{md+=`- [${saved[`d${id}-q${i}`]?'x':' '}] Q: ${q.q}\n`;});
-    md+=`\nNotes:\n${saved['n'+id]||''}\n\n`;
-  });
-  const blob=new Blob([md],{type:'text/markdown'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='prep-progress.md';a.click();
-};
-document.getElementById('importBtn').onclick=()=>document.getElementById('importFile').click();
-document.getElementById('importFile').onchange=async e=>{
-  const f=e.target.files[0];if(!f)return;
-  const txt=await f.text();try{const data=JSON.parse(txt);Object.assign(saved,data);localStorage.setItem('prep-progress',JSON.stringify(saved));build();buildCalendar();updateStreak();alert('Progress imported!')}catch{alert('Invalid file.')}
-};
-
-// dark mode auto
-if(window.matchMedia('(prefers-color-scheme: dark)').matches){document.body.classList.add('dark');}
-document.getElementById('darkToggle').onclick=()=>document.body.classList.toggle('dark');
+document.getElementById('darkToggle').onclick = () => document.body.classList.toggle('dark');
+if (window.matchMedia('(prefers-color-scheme: dark)').matches) { document.body.classList.add('dark'); }
 
 function buildCalendar() {
-  const cal = document.getElementById('calendar');
-  cal.innerHTML = '';
-  for (let i = 1; i <= 30; i++) {
-    const total = (plan[i].todos?.length || 0) + (plan[i].questions?.length || 0);
-    const done = dayCheckedCount(i);
-    const div = document.createElement('div');
-    div.className = 'cell' + (total > 0 && done === total ? ' done' : '');
-    div.textContent = i;
-    div.title = plan[i].topic;
-    div.onclick = () => {
-      const dayEl = document.querySelector(`.day[data-day="${i}"]`);
-      if (dayEl) {
-        const weekDetails = dayEl.closest('details.week');
-        if (weekDetails) {
-          weekDetails.open = true;
-        }
-        dayEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        document.querySelectorAll('.day.highlight').forEach(d => d.classList.remove('highlight'));
-        dayEl.classList.add('highlight');
-        setTimeout(() => dayEl.classList.remove('highlight'), 2500);
-      }
-    };
-    cal.appendChild(div);
-  }
+    const cal = document.getElementById('calendar');
+    cal.innerHTML = '';
+    for (let i = 1; i <= totalDays; i++) {
+        if (!plan[i]) continue;
+        const total = (plan[i].todos?.length || 0) + (plan[i].questions?.length || 0);
+        const done = dayCheckedCount(i);
+        const div = document.createElement('div');
+        div.className = 'cell' + (total > 0 && done === total ? ' done' : '');
+        div.textContent = i;
+        div.title = `Day ${i}: ${plan[i].topic}`;
+        div.onclick = () => {
+            const dayEl = document.querySelector(`.day[data-day="${i}"]`);
+            if (dayEl) {
+                const weekDetails = dayEl.closest('details.week');
+                if (weekDetails) { weekDetails.open = true; }
+                dayEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                document.querySelectorAll('.day.highlight').forEach(d => d.classList.remove('highlight'));
+                dayEl.classList.add('highlight');
+                setTimeout(() => dayEl.classList.remove('highlight'), 2500);
+            }
+        };
+        cal.appendChild(div);
+    }
 }
 
-// build UI
 build();
 buildCalendar();
- highlightToday(); // Disabled by default, can be re-enabled if desired.
-
 </script>
 
 </body>
