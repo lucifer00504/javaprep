@@ -118,158 +118,158 @@ const plan = {
   // -------- Week 1: Core Java Mastery --------
   1: { week: 1, topic: "OOP Principles & Java Basics",
        resources: [{ t: "Oracle: OOP Concepts", u: "https://docs.oracle.com/javase/tutorial/java/concepts/index.html" }],
-       todos: [ "Explain the 4 main ideas of OOP.", "Know common `Object` methods like `equals` and `hashCode`.", "Practice using `String` and `StringBuilder`." ],
+       todos: [ "Read about the 4 OOP principles (e.g., Encapsulation).", "Write a class that demonstrates encapsulation.", "Practice creating and modifying strings with `StringBuilder`." ],
        questions: [{ q: "Demonstrate polymorphism using an interface.", code: `interface Shape { void draw(); }\nclass Circle implements Shape { public void draw() { /*...*/ } }\nShape myShape = new Circle();` }]
   },
   2: { week: 1, topic: "Java Collections Framework",
        resources: [{ t: "Baeldung: Java Collections", u: "https://www.baeldung.com/java-collections" }],
-       todos: [ "Learn how `ArrayList`, `HashSet`, and `HashMap` work.", "Know when to use a `List`, `Set`, or `Map`.", "Use the `Collections.sort()` method." ],
+       todos: [ "Write code that uses `ArrayList`, `HashSet`, and `HashMap`.", "Read about the differences between each collection type.", "Use `Collections.sort()` on an `ArrayList`." ],
        questions: [{ q: "Explain the internal working of a HashMap.", code: `// 1. hashCode() -> hash\n// 2. hash -> index\n// 3. Store Entry(key, value) in bucket (LinkedList/Tree)` }]
   },
   3: { week: 1, topic: "Sorting: Comparable & Comparator",
        resources: [{ t: "Baeldung: Comparable vs Comparator", u: "https://www.baeldung.com/java-comparator-comparable" }],
-       todos: [ "Make a class sortable by default using `Comparable`.", "Write different `Comparator`s to sort a class in multiple ways.", "Sort by two fields at once using `thenComparing`." ],
+       todos: [ "Implement the `Comparable` interface on a custom class.", "Write a separate `Comparator` class for custom sorting.", "Chain two comparators together using `thenComparing`." ],
        questions: [{ q: "Sort a list of `Employee` objects by salary (desc) then by name (asc).", code: `employees.sort(Comparator.comparing(Employee::getSalary).reversed()\n        .thenComparing(Employee::getName));` }]
   },
   4: { week: 1, topic: "Java 8 Features: Streams & Lambdas",
        resources: [{ t: "Oracle: Aggregate Operations", u: "https://docs.oracle.com/javase/tutorial/collections/streams/index.html" }],
-       todos: [ "Change a `for` loop to a Stream.", "Learn which Stream operations run first.", "Use `Optional` to handle possible `null` values." ],
+       todos: [ "Convert a `for` loop that filters a list into a Stream.", "Use `map` to transform elements in a list.", "Rewrite a null-check using `Optional`." ],
        questions: [{ q: "Find the employee with the highest salary from a list.", code: `Optional<Employee> maxSal = employees.stream()\n        .max(Comparator.comparing(Employee::getSalary));` }]
   },
   5: { week: 1, topic: "Exceptions & File I/O",
        resources: [{ t: "Oracle: Exceptions", u: "https://docs.oracle.com/javase/tutorial/essential/exceptions/" }],
-       todos: [ "Know the difference between `checked` and `unchecked` exceptions.", "Use `try-with-resources` to auto-close files.", "Create your own custom exception class." ],
+       todos: [ "Write a method that throws a custom checked exception.", "Read a file using `try-with-resources` to ensure it closes.", "Use a `try-catch-finally` block and explain its purpose." ],
        questions: [{ q: "Create a custom checked exception.", code: `class InvalidDataException extends Exception {\n  public InvalidDataException(String message) {\n    super(message);\n  }\n}` }]
   },
   6: { week: 1, topic: "Concurrency Basics",
        resources: [{ t: "Oracle: Concurrency Tutorial", u: "https://docs.oracle.com/javase/tutorial/essential/concurrency/" }],
-       todos: [ "Make a thread using `Runnable`.", "Use an `ExecutorService` to manage a pool of threads.", "Learn `synchronized` and `volatile` for thread safety." ],
+       todos: [ "Start a new thread using the `Runnable` interface.", "Create a simple thread pool with `ExecutorService`.", "Write a method using `synchronized` to prevent race conditions." ],
        questions: [{ q: "Implement a simple thread-safe counter.", code: `class SafeCounter {\n  private AtomicInteger count = new AtomicInteger(0);\n  public void increment() { count.incrementAndGet(); }\n}` }]
   },
   7: { week: 1, topic: "Review & Mock Test: Core Java",
        resources: [{ t: "HackerRank: Java", u: "https://www.hackerrank.com/domains/java" }],
-       todos: [ "Take a practice test on this week's topics.", "Find and review your weak spots.", "Jot down important notes and concepts." ],
+       todos: [ "Complete 5-10 Java challenges on a platform like HackerRank.", "List your top 3 weakest topics from this week.", "Review your notes specifically on those 3 topics." ],
        questions: []
   },
 
   // -------- Week 2: DSA Foundations --------
   8: { week: 2, topic: "Big O Notation & Arrays",
        resources: [{ t: "InterviewBit: Time Complexity", u: "https://www.interviewbit.com/courses/programming/topics/time-complexity/" }],
-       todos: [ "Understand Big O for measuring code speed.", "Find the speed of basic searching and sorting algorithms.", "Solve simple array puzzles." ],
+       todos: [ "Watch a video explaining Big O notation.", "Calculate the Big O of a simple `for` loop and a nested `for` loop.", "Solve 3 easy array problems on LeetCode." ],
        questions: [{ q: "Find the missing number in an array of 1 to 100.", code: `int n = 100;\nint expectedSum = n * (n + 1) / 2;\nint actualSum = Arrays.stream(nums).sum();\nint missing = expectedSum - actualSum;` }]
   },
   9: { week: 2, topic: "Strings & 2-Pointer/Sliding Window",
        resources: [{ t: "LeetCode: Two Pointers", u: "https://leetcode.com/tag/two-pointers/" }],
-       todos: [ "Practice common string manipulation problems.", "Use the two-pointer trick to solve problems.", "Use the sliding-window trick for subarray problems." ],
+       todos: [ "Solve 'Valid Palindrome' using the two-pointer method.", "Solve 'Maximum Sum Subarray of Size K' with the sliding window method.", "Practice one other string manipulation problem." ],
        questions: [{ q: "Check if a string is a palindrome efficiently.", code: `int left = 0, right = s.length() - 1;\nwhile(left < right) {\n  if(s.charAt(left++) != s.charAt(right--)) return false;\n}\nreturn true;` }]
   },
   10: { week: 2, topic: "Linked Lists",
        resources: [{ t: "GeeksforGeeks: Linked List", u: "https://www.geeksforgeeks.org/data-structures/linked-list/" }],
-       todos: [ "Build a basic Linked List from scratch.", "Solve puzzles like reversing a list or finding the middle element.", "Compare the pros and cons of Linked Lists vs. Arrays." ],
+       todos: [ "Code a `Node` class and a `LinkedList` class from scratch.", "Implement `add`, `remove`, and `print` methods for your list.", "Solve the 'Reverse a Linked List' problem." ],
        questions: [{ q: "Reverse a singly linked list.", code: `ListNode prev = null;\nListNode current = head;\nwhile (current != null) {\n  ListNode nextTemp = current.next;\n  current.next = prev;\n  prev = current;\n  current = nextTemp;\n}` }]
   },
   11: { week: 2, topic: "Stacks & Queues",
        resources: [{ t: "GeeksforGeeks: Stack", u: "https://www.geeksforgeeks.org/stack-data-structure/" }],
-       todos: [ "Build a Stack and a Queue.", "Use a Stack to check for valid parentheses.", "Use a Queue for level-by-level tree traversal." ],
+       todos: [ "Implement a `Stack` using an array or `LinkedList`.", "Solve 'Valid Parentheses' using a `Stack`.", "Implement a `Queue` and use it for a simple task." ],
        questions: [{ q: "Check for balanced parentheses in an expression.", code: `Stack<Character> stack = new Stack<>();\nfor (char c : s.toCharArray()) {\n  if (c == '(') stack.push(')');\n  else if (c == '{') stack.push('}');\n  else if (stack.isEmpty() || stack.pop() != c) return false;\n}\nreturn stack.isEmpty();` }]
   },
   12: { week: 2, topic: "Trees: BSTs & Traversals",
        resources: [{ t: "GeeksforGeeks: Binary Search Tree", u: "https://www.geeksforgeeks.org/binary-search-tree-data-structure/" }],
-       todos: [ "Build a Binary Search Tree (BST) with insert and search.", "Write code for tree traversals (in-order, pre-order, post-order).", "Practice BFS (level-by-level) and DFS (depth-first) on a tree." ],
+       todos: [ "Code a `TreeNode` and a `BinarySearchTree` class.", "Implement an `insert` method for your BST.", "Write code for pre-order, in-order, and post-order traversals." ],
        questions: [{ q: "Find the maximum depth of a binary tree.", code: `public int maxDepth(TreeNode root) {\n  if (root == null) return 0;\n  int leftDepth = maxDepth(root.left);\n  int rightDepth = maxDepth(root.right);\n  return Math.max(leftDepth, rightDepth) + 1;\n}` }]
   },
   13: { week: 2, topic: "Heaps & Priority Queues",
        resources: [{ t: "Baeldung: Java PriorityQueue", u: "https://www.baeldung.com/java-priority-queue" }],
-       todos: [ "Learn what a Heap is (min-heap vs. max-heap).", "Use Java's `PriorityQueue` to easily solve problems.", "Solve 'find the Kth largest element' using a min-heap." ],
+       todos: [ "Read about the difference between a min-heap and a max-heap.", "Create a `PriorityQueue` in Java and practice adding/removing elements.", "Solve 'Kth Largest Element in an Array'." ],
        questions: [{ q: "Find the Kth largest element in an array.", code: `PriorityQueue<Integer> minHeap = new PriorityQueue<>();\nfor (int num : nums) {\n  minHeap.add(num);\n  if (minHeap.size() > k) {\n    minHeap.poll();\n  }\n}\nreturn minHeap.peek();` }]
   },
   14: { week: 2, topic: "Hashing: Maps & Sets",
        resources: [{ t: "GeeksforGeeks: Hashing", u: "https://www.geeksforgeeks.org/hashing-data-structure/" }],
-       todos: [ "Learn how `HashMap` and `HashSet` prevent duplicates.", "Understand what happens when two keys have the same hash code (collision).", "Solve the 'Two Sum' problem using a HashMap." ],
+       todos: [ "Read an article explaining how a `HashMap` works internally.", "Solve the 'Two Sum' problem using a `HashMap`.", "Solve the 'Group Anagrams' problem." ],
        questions: [{ q: "Solve the 'Two Sum' problem.", code: `Map<Integer, Integer> map = new HashMap<>();\nfor (int i = 0; i < nums.length; i++) {\n  int complement = target - nums[i];\n  if (map.containsKey(complement)) {\n    return new int[] { map.get(complement), i };\n  }\n  map.put(nums[i], i);\n}` }]
   },
 
   // -------- Week 3: Building with Spring --------
   15: { week: 3, topic: "Spring Core & Spring Boot",
        resources: [{ t: "Spring Docs: Core", u: "https://docs.spring.io/spring-framework/reference/core.html" }],
-       todos: [ "Learn how Spring automatically provides objects you need (DI).", "Use annotations like `@Component` and `@Autowired`.", "Understand how Spring Boot simplifies setup with starters." ],
+       todos: [ "Read about Dependency Injection in Spring.", "Create a Spring Boot project and define a bean with `@Component`.", "Inject a bean into another using `@Autowired`." ],
        questions: [{ q: "How do you define a bean in Spring?", code: `@Configuration\npublic class AppConfig {\n  @Bean\n  public MyService myService() {\n    return new MyServiceImpl();\n  }\n}` }]
   },
   16: { week: 3, topic: "Building REST APIs with Spring MVC",
        resources: [{ t: "Spring Guide: Building a RESTful Web Service", u: "https://spring.io/guides/gs/rest-service/" }],
-       todos: [ "Learn the flow of a web request in Spring MVC.", "Build API endpoints with `@RestController` and `@GetMapping`.", "Get data from a URL path (`@PathVariable`) and request body (`@RequestBody`)." ],
+       todos: [ "Create a `@RestController` class.", "Add `@GetMapping` and `@PostMapping` methods.", "Test your endpoints using a tool like Postman or Insomnia." ],
        questions: [{ q: "Create a simple GET endpoint.", code: `@RestController\npublic class MyController {\n  @GetMapping("/hello/{name}")\n  public String sayHello(@PathVariable String name) {\n    return "Hello, " + name;\n  }\n}` }]
   },
   17: { week: 3, topic: "Spring Data JPA & Transactions",
        resources: [{ t: "Spring Docs: Data JPA", u: "https://docs.spring.io/spring-data/jpa/reference/html/" }],
-       todos: [ "Use `JpaRepository` for basic database tasks (save, find, delete).", "Map a Java class to a DB table with `@Entity`.", "Use `@Transactional` to keep database operations safe." ],
+       todos: [ "Define an `@Entity` class.", "Create a `JpaRepository` interface for your entity.", "Use the repository to save and find data in your code." ],
        questions: [{ q: "Define a custom query method in a repository.", code: `public interface UserRepository extends JpaRepository<User, Long> {\n  Optional<User> findByEmail(String email);\n}` }]
   },
   18: { week: 3, topic: "Spring Security",
        resources: [{ t: "Baeldung: Spring Security", u: "https://www.baeldung.com/security-spring" }],
-       todos: [ "Learn login (Authentication) vs. permissions (Authorization).", "Set up a basic Spring Security configuration.", "Use JWT for secure, stateless APIs." ],
+       todos: [ "Add the Spring Security starter to your project.", "Configure a basic security rule to protect all endpoints.", "Read an article about how JWT authentication works." ],
        questions: [{ q: "Configure a basic security filter chain.", code: `@Bean\npublic SecurityFilterChain filterChain(HttpSecurity http) throws Exception {\n  http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated());\n  return http.build();\n}` }]
   },
   19: { week: 3, topic: "Project: Build & Validate API",
        resources: [],
-       todos: [ "Start building a simple CRUD API (e.g., a To-Do list).", "Use `@Valid` to check incoming data for errors.", "Create a central place to handle all API errors with `@ControllerAdvice`." ],
+       todos: [ "Create a new Spring Boot project for a mini-API.", "Add validation annotations like `@NotBlank` to your request classes.", "Create a `@ControllerAdvice` class to handle exceptions gracefully." ],
        questions: [{ q: "Add validation to a request DTO.", code: `public class CreateTaskDto {\n  @NotBlank\n  @Size(min = 3)\n  private String title;\n  // getters and setters\n}` }]
   },
   20: { week: 3, topic: "Project: Secure & Test API",
        resources: [{ t: "Baeldung: Spring Boot Testing", u: "https://www.baeldung.com/spring-boot-testing" }],
-       todos: [ "Add security rules to your API endpoints.", "Write tests for your business logic with `Mockito`.", "Write tests to check if your API endpoints work with `@SpringBootTest`." ],
+       todos: [ "Secure the endpoints of your mini-project.", "Write a unit test for a service method using `Mockito`.", "Write an integration test for a controller endpoint." ],
        questions: [{ q: "How do you mock a service in a unit test?", code: `@ExtendWith(MockitoExtension.class)\nclass MyServiceTest {\n  @Mock\n  private MyRepository repository;\n  @InjectMocks\n  private MyService service;\n}` }]
   },
   21: { week: 3, topic: "Containerize with Docker",
        resources: [{ t: "Docker Docs: Get Started", u: "https://docs.docker.com/get-started/" }],
-       todos: [ "Write a `Dockerfile` for your Spring app.", "Build a Docker image from your `Dockerfile`.", "Practice basic Docker commands like `build`, `run`, and `ps`." ],
+       todos: [ "Create a `Dockerfile` for your Spring Boot project.", "Build a Docker image from the `Dockerfile`.", "Run the Docker image as a container and test it." ],
        questions: [{ q: "Write a simple Dockerfile for a Java app.", code: `FROM eclipse-temurin:17-jre\nWORKDIR /app\nCOPY target/app.jar app.jar\nEXPOSE 8080\nENTRYPOINT ["java","-jar","app.jar"]` }]
   },
 
   // -------- Week 4: Advanced Concepts & Interview Readiness --------
   22: { week: 4, topic: "Advanced Algorithms: DP",
        resources: [{ t: "LeetCode: DP Study Plan", u: "https://leetcode.com/study-plan/dynamic-programming/" }],
-       todos: [ "Learn the two main ideas of Dynamic Programming.", "Understand top-down (Memoization) vs. bottom-up (Tabulation).", "Solve Fibonacci using both DP methods." ],
+       todos: [ "Read about the concept of memoization in DP.", "Write a recursive Fibonacci solution, then add a cache (memoization).", "Convert the memoized solution to a bottom-up (tabulation) one." ],
        questions: [{ q: "Write a tabulated (bottom-up) solution for Fibonacci.", code: `int[] dp = new int[n + 1];\ndp[0] = 0; dp[1] = 1;\nfor(int i = 2; i <= n; i++) {\n  dp[i] = dp[i-1] + dp[i-2];\n}\nreturn dp[n];` }]
   },
   23: { week: 4, topic: "Advanced Algorithms: Graphs",
        resources: [{ t: "GeeksforGeeks: Graph", u: "https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/" }],
-       todos: [ "Learn the two ways to represent a graph in code.", "Practice traversing a graph with DFS (depth-first) and BFS (breadth-first).", "Learn about shortest path algorithms like Dijkstra's." ],
+       todos: [ "Create a graph in code using an adjacency list.", "Implement a BFS traversal for your graph.", "Implement a DFS traversal for your graph." ],
        questions: [{ q: "How do you represent a graph using an Adjacency List?", code: `Map<Integer, List<Integer>> adjList = new HashMap<>();\n// For each vertex, store a list of its neighbors.` }]
   },
   24: { week: 4, topic: "SQL Deep Dive",
        resources: [{ t: "Use The Index, Luke!", u: "https://use-the-index-luke.com/" }],
-       todos: [ "Master different SQL `JOIN`s (INNER, LEFT, RIGHT).", "Use window functions like `RANK()` to rank results within a group.", "Learn how database indexes speed up queries." ],
+       todos: [ "Write a SQL query that uses an `INNER JOIN` and a `LEFT JOIN`.", "Write a query using `RANK()` to find the top N items in groups.", "Read an article about how database indexes work." ],
        questions: [{ q: "Find the 2nd highest salary per department.", code: `SELECT * FROM (\n  SELECT name, salary, department,\n  DENSE_RANK() OVER (PARTITION BY department ORDER BY salary DESC) as rnk\n  FROM employees\n) tmp WHERE rnk = 2;` }]
   },
   25: { week: 4, topic: "Cloud & AWS Basics",
        resources: [{ t: "AWS Docs: What is Cloud Computing?", u: "https://aws.amazon.com/what-is-cloud-computing/" }],
-       todos: [ "Learn the main benefits of using the cloud (e.g., scalability).", "Know the purpose of core AWS services: EC2, S3, IAM.", "Explain how you would deploy your app on AWS." ],
+       todos: [ "Read the AWS overview for EC2, S3, and IAM.", "Create a free-tier AWS account if you don't have one.", "Write a small Java program to list S3 buckets using the AWS SDK." ],
        questions: [{ q: "How would you upload a file to S3 using the AWS SDK for Java?", code: `S3Client s3 = S3Client.create();\ns3.putObject(PutObjectRequest.builder().bucket(B).key(K).build(),\n             RequestBody.fromFile(new File(F)));` }]
   },
   26: { week: 4, topic: "System Design Fundamentals",
        resources: [{ t: "GitHub: System Design Primer", u: "https://github.com/donnemartin/system-design-primer" }],
-       todos: [ "Design a URL shortener system from scratch.", "Think about the APIs, database choice, and how to scale it.", "Discuss important trade-offs like speed vs. data consistency." ],
+       todos: [ "Watch a video of a 'URL Shortener' system design interview.", "Draw a diagram of the main components (API, cache, DB).", "List potential problems or bottlenecks in your design." ],
        questions: [{ q: "Outline the high-level components for a URL shortener.", code: `// 1. API Gateway (Rate Limiting)\n// 2. Web Servers (Stateless)\n// 3. Hashing Service (Generates short code)\n// 4. Caching Layer (e.g., Redis)\n// 5. Database (e.g., NoSQL for scale)` }]
   },
   27: { week: 4, topic: "Microservices Concepts",
        resources: [{ t: "Microservices.io", u: "https://microservices.io/" }],
-       todos: [ "Explain the pros and cons of microservices.", "Learn common patterns like API Gateway and Service Discovery.", "Discuss challenges in microservices, like keeping data in sync." ],
+       todos: [ "Read an article comparing monoliths and microservices.", "Draw a diagram showing how an API Gateway routes requests.", "List three challenges of using microservices." ],
        questions: [{ q: "How do services communicate in a microservice architecture?", code: `// 1. Synchronous: REST APIs, gRPC\n// 2. Asynchronous: Message Queues (RabbitMQ, Kafka)` }]
   },
   28: { week: 4, topic: "Behavioral Prep & STAR Method",
        resources: [{ t: "Indeed: STAR Method", u: "https://www.indeed.com/career-advice/interviewing/how-to-use-the-star-interview-response-technique" }],
-       todos: [ "Prepare 5+ stories about your experience using the STAR method.", "Practice answering common behavioral questions.", "Perfect your 'Tell me about yourself' story (60-90 seconds)." ],
+       todos: [ "Write out three of your career stories using the STAR format.", "Practice reciting your 'Tell me about yourself' pitch.", "Record yourself answering one behavioral question and watch it." ],
        questions: [{ q: "Structure an answer for 'Tell me about a time you had a conflict.'", code: `// S (Situation): Briefly describe the context.\n// T (Task): What was your responsibility?\n// A (Action): What specific steps did YOU take?\n// R (Result): What was the outcome? What did you learn?` }]
   },
   29: { week: 4, topic: "Resume Polish & Mock Coding",
        resources: [{ t: "LeetCode Medium", u: "https://leetcode.com/problemset/all/?difficulty=MEDIUM" }],
-       todos: [ "Update your resume to match keywords from the job description.", "Do a timed coding challenge with 2-3 problems.", "Practice explaining your code out loud as you write it." ],
+       todos: [ "Tailor your resume for a specific Java developer job posting.", "Do a 45-minute timed mock coding interview (2 problems).", "After the timer, review and improve your solution." ],
        questions: []
   },
   30: { week: 4, topic: "Final Mock Interview",
        resources: [{ t: "Pramp", u: "https://www.pramp.com/" }],
-       todos: [ "Do a full mock interview with a friend or peer.", "Get feedback on both your technical and communication skills.", "Review the feedback, relax, and be confident!" ],
+       todos: [ "Schedule and complete a mock interview with a peer.", "Ask for specific feedback on your problem-solving and communication.", "Take time to review the feedback and relax." ],
        questions: []
   }
 };
@@ -487,7 +487,7 @@ function buildCalendar() {
 // build UI
 build();
 buildCalendar();
-// highlightToday(); // Disabled by default, can be re-enabled if desired.
+ highlightToday(); // Disabled by default, can be re-enabled if desired.
 
 </script>
 
