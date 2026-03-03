@@ -63,28 +63,28 @@ const fetchGeminiWithBackoff = async (payload, apiKey, maxRetries = 3) => {
   let lastErrorMsg = "";
 
   for (const modelId of modelsToTry) {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
     let delay = 1000;
-    
-    for (let i = 0; i < maxRetries; i++) {
-      try {
-        const response = await fetch(url, { 
-          method: 'POST', 
-          headers: { 'Content-Type': 'application/json' }, 
-          body: JSON.stringify(payload) 
-        });
+  
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      const response = await fetch(url, { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' }, 
+        body: JSON.stringify(payload) 
+      });
         
-        if (!response.ok) {
-          const errorData = await response.json();
+      if (!response.ok) {
+        const errorData = await response.json();
           lastErrorMsg = errorData?.error?.message || `HTTP ${response.status}`;
           
           if (response.status === 404 || lastErrorMsg.toLowerCase().includes("not found")) {
             break; // Break retry loop to immediately fall back to the next model
           }
           throw new Error(lastErrorMsg);
-        }
-        return await response.json();
-      } catch (err) {
+      }
+      return await response.json();
+    } catch (err) {
         lastErrorMsg = err.message;
         if (err.message.toLowerCase().includes("not found")) {
           break; // Stop retrying this model if it's explicitly not found
@@ -92,10 +92,10 @@ const fetchGeminiWithBackoff = async (payload, apiKey, maxRetries = 3) => {
         if (i === maxRetries - 1 && modelId === modelsToTry[modelsToTry.length - 1]) {
           throw err; // All models and retries failed
         }
-        await new Promise(r => setTimeout(r, delay));
-        delay *= 2;
-      }
+      await new Promise(r => setTimeout(r, delay));
+      delay *= 2;
     }
+  }
   }
   throw new Error(lastErrorMsg || "No compatible Gemini model found for this API key.");
 };
@@ -758,7 +758,7 @@ function Flashcards({ studyData, setActiveContext, bookmarkedCards, toggleBookma
         <div><h2 className="text-2xl font-extrabold text-slate-800 tracking-tight">Flashcards</h2><p className="text-sm text-slate-500 font-medium">Card {currentIndex+1} of {filtered.length}</p></div>
         <div className="flex items-center gap-2">
           <div className="flex bg-slate-100 p-1 rounded-xl shadow-inner">
-             <button onClick={() => setFilterMode('all')} className={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${filterMode==='all'?'bg-white shadow-sm':'text-slate-500'}`}>All</button>
+             <button onClick={() => setFilterMode('all')} className={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${filterMode==='all'?'bg-white shadow-sm text-slate-800':'text-slate-500'}`}>All</button>
              <button onClick={() => setFilterMode('learning')} className={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${filterMode==='learning'?'bg-white shadow-sm text-emerald-600':'text-slate-500'}`}>Learning</button>
              <button onClick={() => setFilterMode('starred')} className={`px-3 py-1.5 text-xs font-bold rounded-lg transition flex items-center ${filterMode==='starred'?'bg-white shadow-sm text-amber-600':'text-slate-500'}`}><Star className="w-3 h-3 mr-1 fill-current" /> Starred</button>
           </div>
@@ -805,20 +805,36 @@ function MockInterview({ studyData, setActiveContext, bookmarkedCards, toggleBoo
   const [idx, setIdx] = useState(0);
   const [rev, setRev] = useState(false);
   const [isS, setIsS] = useState(false);
+  const [isRandomized, setIsRandomized] = useState(false);
+
   const flat = useMemo(() => {
     let l = []; studyData.forEach(t => t.questions?.forEach(q => l.push({ ...q, topic: t.name }))); return l;
   }, [studyData]);
+  
   const topics = ['All', ...new Set(flat.map(c => c.topic))];
-  const filtered = selected === 'All' ? flat : flat.filter(c => c.topic === selected);
+  
+  const filtered = useMemo(() => {
+    let f = selected === 'All' ? flat : flat.filter(c => c.topic === selected);
+    if (isRandomized) return shuffleArray(f);
+    return f;
+  }, [flat, selected, isRandomized]);
+  
   const q = filtered[idx];
   useEffect(() => { setActiveContext(q); }, [q, setActiveContext]);
   const isB = bookmarkedCards.includes(q?.id);
+  
   if (!q) return <div className="p-20 text-center font-bold text-slate-400">Please load data via Dashboard.</div>;
+  
   return (
     <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden animate-in fade-in transition-all">
       <div className="bg-white border-b border-slate-100 p-5 flex flex-col md:flex-row justify-between items-center gap-4">
         <div className="flex items-center space-x-3 text-indigo-600 font-bold text-sm uppercase bg-indigo-50 px-4 py-2 rounded-lg"><BookOpen className="w-4 h-4" /><span>{q.topic}</span></div>
-        <select value={selected} onChange={(e) => { setSelected(e.target.value); setIdx(0); setRev(false); }} className="bg-white border border-slate-200 text-xs font-bold text-slate-700 rounded-xl p-2 w-48 outline-none focus:ring-2 focus:ring-indigo-500 transition-all shadow-sm">{topics.map(t => <option key={t} value={t}>{t}</option>)}</select>
+        <div className="flex items-center gap-3">
+          <button onClick={() => { setIsRandomized(!isRandomized); setIdx(0); setRev(false); }} className={`p-2 rounded-xl border transition shadow-sm ${isRandomized ? 'bg-indigo-100 text-indigo-700 border-indigo-200' : 'bg-white hover:bg-slate-50'}`} title="Shuffle Questions">
+            <Shuffle className="w-4 h-4" />
+          </button>
+          <select value={selected} onChange={(e) => { setSelected(e.target.value); setIdx(0); setRev(false); }} className="bg-white border border-slate-200 text-xs font-bold text-slate-700 rounded-xl p-2 w-48 outline-none focus:ring-2 focus:ring-indigo-500 transition-all shadow-sm">{topics.map(t => <option key={t} value={t}>{t}</option>)}</select>
+        </div>
       </div>
       <div className="w-full bg-slate-100 h-1.5"><div className="bg-indigo-500 h-1.5 transition-all duration-500" style={{ width: `${(idx/filtered.length)*100}%` }}></div></div>
       <div className="p-8 sm:p-12">
